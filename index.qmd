@@ -1,5 +1,23 @@
 ---
-title: "michellelam777.github.io"
+title: "Michelle Lam"
+about:
+  template: trestles
+  image: images/headshot.png
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/michelle-lam-33554591/
+    - icon: github
+      text: GitHub
+      href: https://github.com/michellelam777
+    - icon: envelope
+      text: Email
+      href: mailto:michellelam777@gmail.com
+      
 ---
 
-This is my website.
+### Hello!
+
+My name is Michelle Lam (last name pronounced like the animal lamb 🐑). I'm currently a graduate student working towards a [Master of Environmental Data Science](https://bren.ucsb.edu/masters-programs/master-environmental-data-science) (MEDS) from the Bren School of Environmental Science & Management at UCSB. Check out my about page for more info!
