@@ -1,0 +1,31 @@
+/*-- scss:defaults --*/
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+// Colors
+$dark-green: #515e45;
+$sage: #a3c4b0;
+$ice-green: #e6f5f2;
+
+// Base Document Colors 
+$navbar-bg: $sage;
+$body-bg: $ice-green;
+
+/*-- scss:rules --*/
+
+h1, h3 {
+  letter-spacing: 8px;
+  font-weight: 700;
+  color: $dark-green;
+}
+
+.title {
+  color: red;
+}
+
+.custom-subtitle {
+  font-size: 22px;
+  font-style: italic;
+  color: $dark-green;
+}
