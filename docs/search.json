@@ -12,5 +12,26 @@
     "title": "About",
     "section": "",
     "text": "Michelle Lam is currently pursuing a Master of Environmental Data Science (MEDS) at the University of California, Santa Barbara Bren School of Environmental Science & Management. Michelle graduated from Santa Clara University in 2017 with a B.S. in Environmental Science with an emphasis on water, energy, and technology. During her time at Santa Clara, she worked for a municipal utility promoting energy efficiency programs, which sparked her interest in renewable energy and sustainability in the built environment. After graduating, she further delved into the renewable energy sector working as a Business Systems Analyst for a residential solar company. In that role, she gained first-hand experience managing and using data in various business applications to drive decisions while expanding her knowledge of the solar industry. With her master’s degree, she hopes to use data science to further the development of renewable energy and help businesses and organizations create a sustainable built environment."
+  },
+  {
+    "objectID": "Posts.html",
+    "href": "Posts.html",
+    "title": "My Blog",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "My Blog",
+    "section": "",
+    "text": "MEDS\n\n\ntest\n\n\nR\n\n\n\nThis is a description\n\n\n\nMichelle Lam\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/2022-10-24-practice-blog/index.html",
+    "href": "posts/2022-10-24-practice-blog/index.html",
+    "title": "Blog Post Title",
+    "section": "",
+    "text": "CitationBibTeX citation:@online{lam2022,\n  author = {Michelle Lam},\n  title = {Blog {Post} {Title}},\n  date = {2022-10-24},\n  url = {https://michellelam777.github.io/posts/2022-10-24-practice-blog},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nMichelle Lam. 2022. “Blog Post Title.” October 24, 2022. https://michellelam777.github.io/posts/2022-10-24-practice-blog."
   }
 ]

@@ -1,0 +1,16 @@
+---
+title: "Blog Post Title"
+description: "This is a description"
+author:
+  - name: Michelle Lam
+    url: https://michellelam777.github.io
+    affiliation: MEDS
+    affiliation-url: https://ucsb-meds.github.io
+date: 2022-10-24
+categories: [MEDS, test, R]
+citation: 
+  url: https://michellelam777.github.io/posts/2022-10-24-practice-blog
+draft: false
+---
+
+Hi this is my class example blog post
