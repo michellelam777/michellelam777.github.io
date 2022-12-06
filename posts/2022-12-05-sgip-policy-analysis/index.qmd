@@ -1,0 +1,67 @@
+---
+title: "SGIP Policy Analysis"
+description: "Exploring the effects of income on SGIP applications"
+author:
+  - name: Michelle Lam
+    affiliation: Masters of Environmental Data Science (MEDS) @ The Bren School (UCSB)
+    affiliation-url: https://ucsb-meds.github.io/
+date: 2022-12-05
+categories: [data science, R, energy storage]
+citation: 
+  url: https://michellelam777.github.io/posts/2022-12-05-sgip-policy-analysis/
+draft: true
+format:
+  html: 
+    code-fold: true
+    code-summary: "checkout the code"
+    code-overflow: wrap
+    code-block-bg: "#e3f3ff"
+page-layout: article
+image: energy-storage.jpeg
+---
+
+### The Question
+
+#### **What is the effect of income on SGIP applications?**
+
+### Introduction
+
+::: g-col-8
+Energy storage is poised for rapid growth and will play a major role in the decarbonization of our energy industry. [^1] The California Public Utilities Commission (CPUC) created the Self Generation Incentive Program (SGIP), in part, to provide rebates to people and organizations looking to install energy storage systems. In 2020, they introduced new funding categories that provide higher rebates under "Equity" and "Equity Resilience" aimed to help lower-income, medically vulnerable, and at risk for fire communities pay for a battery. [^2] Given that lower socioeconomic communities are shown to experience more frequent Public Safety Power Shutoffs (PSPS), [^3] an energy storage system could be critical to avoiding the adverse effects of a power outage (e.g. food insecurity).
+
+Examining if there is an effect of income on SGIP application, could help inform the effectiveness of this rebate program and subsequent policy decisions.
+:::
+
+[^1]: Blair, Nate, Chad Augustine, Wesley Cole, et al. 2022. Storage Futures Study: Key Learnings for the Coming Decades. Golden, CO: National Renewable Energy Laboratory. NREL/TP-7A40-81779. https://www.nrel.gov/docs/fy22osti/81779.pdf
+
+[^2]: Auth, CPUC. "Participating in Self-Generation Incentive Program (SGIP)." California Public Utilities Commission, 2020, https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/demand-side-management/self-generation-incentive-program/participating-in-self-generation-incentive-program-sgip.
+
+[^3]: Vilgalys, Max. "Equity and Adaptation to Wildfire Risk: Evidence from California Public Safety Power Shutoffs." (2022).
+
+### Data
+
+::: g-col-8
+**SGIP Applications**
+
+SGIP application data is reported on a weekly basis via an excel file. For this analysis, SGIP applications were filtered down to just residential battery applications for 2020. The data was then summarized by zip code to get total count of applications for each zip code.
+:::
+
+```{r,warning=FALSE, message=FALSE, results='hide'}
+#loading the necessary pacakges
+library(tidyverse)
+library(readr)
+library(gt)
+library(tidycensus)
+library(janitor)
+library(lubridate)
+library(modelr)
+library(gridExtra)
+
+#setting file path for root directory
+rootdir <- ("/Users/michelle/Documents/UCSB Grad School/Courses/eds_222/eds222_final_project")
+datadir <-(file.path(rootdir,"data"))
+
+#store and set API key to access tidycensus
+census_token <- Sys.getenv('CENSUS_KEY')
+census_api_key(census_token)
+```
