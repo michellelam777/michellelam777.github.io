@@ -10,7 +10,20 @@ date: 2022-10-24
 categories: [MEDS, test, R]
 citation: 
   url: https://michellelam777.github.io/posts/2022-10-24-practice-blog
+bibliography: references.bib
 draft: false
 ---
 
-Hi this is my class example blog post
+Hi this is my class example[^1] blog post^[here is my second footnote].
+
+[^1]: Here is my footnote
+
+here's [^3] some more text
+
+Here I'm going to cite Sam's blog post from last year [@csik2021].
+
+[^3]: here is my first paragraph
+    
+    here is my second paragraph
+    
+    here is my third paragraph
