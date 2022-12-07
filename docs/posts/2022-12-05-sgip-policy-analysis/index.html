@@ -8,9 +8,9 @@
 
 <meta name="author" content="Michelle Lam">
 <meta name="dcterms.date" content="2022-12-05">
-<meta name="description" content="Exploring the effects of income on SGIP applications">
+<meta name="description" content="Exploring the effects of income on Self Generation Incentive Program (SGIP) applications">
 
-<title>michellelam777.github.io - SGIP Policy Analysis</title>
+<title>michellelam777.github.io - California Battery Rebate Program Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -123,6 +123,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -134,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <a class="navbar-brand" href="../../index.html">
-    <img src="../../images/michelle-logo.png" alt="">
+    <img src="../../images/logo.png" alt="">
   </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -163,10 +164,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">SGIP Policy Analysis</h1>
+      <h1 class="title">California Battery Rebate Program Analysis</h1>
                   <div>
         <div class="description">
-          Exploring the effects of income on SGIP applications
+          Exploring the effects of income on Self Generation Incentive Program (SGIP) applications
         </div>
       </div>
                           <div class="quarto-categories">
@@ -217,24 +218,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <section id="the-question" class="level3">
-<h3 class="anchored" data-anchor-id="the-question">The Question</h3>
+<h3 class="anchored" data-anchor-id="the-question"><strong>The Question</strong></h3>
 <section id="what-is-the-effect-of-income-on-sgip-applications" class="level4">
 <h4 class="anchored" data-anchor-id="what-is-the-effect-of-income-on-sgip-applications"><strong>What is the effect of income on SGIP applications?</strong></h4>
 </section>
 </section>
 <section id="introduction" class="level3">
-<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
-<div class="g-col-8">
-<p>Energy storage is poised for rapid growth and will play a major role in the decarbonization of our energy industry. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The California Public Utilities Commission (CPUC) created the Self Generation Incentive Program (SGIP), in part, to provide rebates to people and organizations looking to install energy storage systems. In 2020, they introduced new funding categories that provide higher rebates under “Equity” and “Equity Resilience” aimed to help lower-income, medically vulnerable, and at risk for fire communities pay for a battery. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Given that lower socioeconomic communities are shown to experience more frequent Public Safety Power Shutoffs (PSPS), <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> an energy storage system could be critical to avoiding the adverse effects of a power outage (e.g.&nbsp;food insecurity).</p>
-<p>Examining if there is an effect of income on SGIP application, could help inform the effectiveness of this rebate program and subsequent policy decisions.</p>
-</div>
+<h3 class="anchored" data-anchor-id="introduction"><strong>Introduction</strong></h3>
+<p>Energy storage is poised for rapid growth and will play a major role in the decarbonization of our energy industry. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The California Public Utilities Commission (CPUC) created the Self Generation Incentive Program (SGIP), in part, to provide rebates to people and organizations looking to install energy storage systems. In 2020, they introduced new funding categories that provide higher rebates under “Equity” and “Equity Resiliency” aimed to help lower-income, medically vulnerable, and at risk for fire communities pay for a battery. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Given that lower socioeconomic communities are shown to experience more frequent Public Safety Power Shutoffs (PSPS), <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> an energy storage system could be critical to avoiding the adverse effects of a power outage (e.g.&nbsp;food insecurity). There has been a study showing the socioeconomic disparities in residential battery storage adoption, <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> but there hasn’t been targeted analysis on SGIP participation post equity and equity resiliency funding becoming available.</p>
+<p>Examining if there is an effect of income on SGIP applications for 2020, could help inform the effectiveness of the new funding categories and subsequent policy decisions.</p>
 </section>
 <section id="data" class="level3">
-<h3 class="anchored" data-anchor-id="data">Data</h3>
-<div class="g-col-8">
-<p><strong>SGIP Applications</strong></p>
-<p>SGIP application data is reported on a weekly basis via an excel file. For this analysis, SGIP applications were filtered down to just residential battery applications for 2020. The data was then summarized by zip code to get total count of applications for each zip code.</p>
-</div>
+<h3 class="anchored" data-anchor-id="data"><strong>Data</strong></h3>
+<section id="sgip-applications" class="level5">
+<h5 class="anchored" data-anchor-id="sgip-applications"><strong>SGIP Applications</strong></h5>
+<p>I downloaded SGIP application data from the California Distributed Energy Statistics site. <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> Application data is reported on a weekly basis via an excel file. For this analysis, SGIP applications were filtered down to just residential and single family battery applications for 2020. The data was then summarized by zip code to get total count of applications for each zip code. I did notice that the metadata didn’t always correctly specify the categorical values in each variable, so there is room for error in categorization.</p>
+<p>When visualizing SGIP applications for 2020 you can see that over 40% of applications fall under the Equity Resiliency category.</p>
 <div class="cell">
 <details>
 <summary>checkout the code</summary>
@@ -247,16 +246,704 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelr)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#setting file path for root directory</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>rootdir <span class="ot">&lt;-</span> (<span class="st">"/Users/michelle/Documents/UCSB Grad School/Courses/eds_222/eds222_final_project"</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>datadir <span class="ot">&lt;-</span>(<span class="fu">file.path</span>(rootdir,<span class="st">"data"</span>))</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#store and set API key to access tidycensus</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>census_token <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">'CENSUS_KEY'</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">census_api_key</span>(census_token)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#setting file path for root directory</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>rootdir <span class="ot">&lt;-</span> (<span class="st">"/Users/michelle/Documents/UCSB Grad School/Courses/eds_222/eds222_final_project"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>datadir <span class="ot">&lt;-</span>(<span class="fu">file.path</span>(rootdir,<span class="st">"data"</span>))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#store and set API key to access tidycensus</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>census_token <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">'CENSUS_KEY'</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">census_api_key</span>(census_token)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#read in the SGIP data</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>sgip <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(datadir,<span class="st">"sgip_weekly_data.csv"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">#filter down to rebates for just residential electrochemcial storage that were not cancelled, format date and zip</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>sgip_res_battery <span class="ot">&lt;-</span> sgip <span class="sc">|&gt;</span> </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(equipment_type <span class="sc">==</span> <span class="st">"Electrochemical Storage"</span>, host_customer_sector <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Residential"</span>, <span class="st">"Single Family"</span>), budget_classification <span class="sc">!=</span> <span class="st">"Cancelled"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"city"</span>, <span class="st">"county"</span>, <span class="st">"zip"</span>, <span class="st">"date_received"</span>, <span class="st">"budget_category"</span>, <span class="st">"host_customer_sector"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"date_received"</span> <span class="ot">=</span> <span class="fu">str_sub</span>(date_received, <span class="dv">1</span>, <span class="dv">8</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"date_received"</span> <span class="ot">=</span> <span class="fu">as.Date</span>(date_received, <span class="at">format =</span> <span class="st">"%m/%d/%y"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"year_received"</span> <span class="ot">=</span> <span class="fu">year</span>(date_received)) <span class="sc">|&gt;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"month_received"</span> <span class="ot">=</span> <span class="fu">month</span>(date_received)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"zip"</span> <span class="ot">=</span> <span class="fu">ifelse</span>(</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_length</span>(zip) <span class="sc">==</span> <span class="dv">10</span>, </span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">substring</span>(zip, <span class="dv">1</span>, <span class="fu">nchar</span>(zip)<span class="sc">-</span><span class="dv">5</span>),</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    zip))</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co">#create sgip dataset filtered for 2020</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>sgip_2020 <span class="ot">&lt;-</span> sgip_res_battery <span class="sc">|&gt;</span> </span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year_received <span class="sc">==</span> <span class="dv">2020</span>)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># create dataframe showing count of applications in each zip code for 2020</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>sgip_zip_2020 <span class="ot">&lt;-</span> sgip_2020 <span class="sc">|&gt;</span> </span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(zip) <span class="sc">|&gt;</span> </span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="co">#create a summary data frame showing applications by budget category</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>sgip_2020_budget <span class="ot">&lt;-</span> sgip_2020 <span class="sc">|&gt;</span> </span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(budget_category) <span class="sc">|&gt;</span> </span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> <span class="fu">round</span>(((count<span class="sc">/</span><span class="fu">sum</span>(count))<span class="sc">*</span><span class="dv">100</span>),<span class="dv">2</span>))</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="co">#plot percent SGIP applications by category</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sgip_2020_budget, <span class="fu">aes</span>(<span class="at">y =</span> budget_category, <span class="at">x =</span> percent)) <span class="sc">+</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"skyblue3"</span>) <span class="sc">+</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Percent of SGIP Applications in Each Budget Category (2020)"</span>, <span class="at">y =</span> <span class="st">"Budget Category"</span>, <span class="at">x =</span> <span class="st">"Percent of Applications"</span>) <span class="sc">+</span> </span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="american-community-survey-acs" class="level5">
+<h5 class="anchored" data-anchor-id="american-community-survey-acs"><strong>American Community Survey (ACS)</strong></h5>
+<p>I accessed American Community Survey (ACS) data containing per capita income and population for each census tract in California through an API and the tidycensus package in R.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Some limitations of the ACS data include that it is collected by selecting a random sample of addresses and therefore is not a true census of the population and data might not be as available/reliable for rural areas.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<div class="cell">
+<details>
+<summary>checkout the code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#access ACS data variables for 2020 year </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>v20 <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2020</span>, <span class="st">"acs5"</span>, <span class="at">cache =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#read in per capita income data for census tracts in CA</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ca_pc_income_tract <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">"tract"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">percapita_income =</span> <span class="st">"B19301_001"</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                            <span class="at">state =</span> <span class="st">"CA"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">year =</span> <span class="dv">2020</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#clean and format per capita income data frame</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>ca_pc_income_tract_clean <span class="ot">&lt;-</span> ca_pc_income_tract <span class="sc">|&gt;</span> </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">"GEOID"</span>, <span class="st">"NAME"</span>, <span class="st">"estimate"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">percapita_income =</span> <span class="st">"estimate"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#read in population data for census tracts in CA</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>ca_pop_tract <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">"tract"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                        <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">population =</span> <span class="st">"B01003_001"</span>),</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                        <span class="at">state =</span> <span class="st">"CA"</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                        <span class="at">year =</span> <span class="dv">2020</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">#clean and format population data frame </span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>ca_pop_tract_clean <span class="ot">&lt;-</span> ca_pop_tract <span class="sc">|&gt;</span> </span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">"GEOID"</span>, <span class="st">"NAME"</span>, <span class="st">"estimate"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">population =</span> <span class="st">"estimate"</span>)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">#combine per capita income and population data frames</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>combine_census <span class="ot">&lt;-</span> <span class="fu">cbind</span>(ca_pc_income_tract_clean, ca_pop_tract_clean<span class="sc">$</span>population) <span class="sc">|&gt;</span> </span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">population =</span> <span class="st">"ca_pop_tract_clean$population"</span>, <span class="at">tract =</span> <span class="st">"GEOID"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+</section>
+<section id="u.s.-department-of-housing-and-urban-development-hud" class="level5">
+<h5 class="anchored" data-anchor-id="u.s.-department-of-housing-and-urban-development-hud"><strong>U.S. Department of Housing and Urban Development (HUD)</strong></h5>
+<p>I downloaded the crosswalk file in the form of a csv from the U.S. HUD site. <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> The file relates zip codes to census tracts and was utilized to match up application data (zip code level) to per capita income and population data (census tract level).</p>
+<div class="cell">
+<details>
+<summary>checkout the code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#read in crosswalk file to use when matching zip codes to census tracts</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>crosswalk <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(datadir,<span class="st">"ZIP_TRACT_122020.csv"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="analysis" class="level3">
+<h3 class="anchored" data-anchor-id="analysis"><strong>Analysis</strong></h3>
+<p>To analyze the effect of income on SGIP applications, I utilized the three datasets outlined above to create a dataframe showing applications per thousand people and per capita income for each zip code. I used population of each zip code to calculate the applications per thousand people in order to account for the fact that higher income areas have more people and to create a more appropriate scale for interpretation.</p>
+<div class="cell">
+<details>
+<summary>checkout the code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#combine sgip_zip_2020 and crosswalk file by zip to get a data frame with sgip applications per census tract</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#because there are multiple census tracts for one zip code, use the res_ratio to allocate what portion of the count of SGIP applications should be allocated to one census tract</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>sgip_zip_census <span class="ot">&lt;-</span> <span class="fu">left_join</span>(sgip_zip_2020, crosswalk, <span class="at">by =</span> <span class="st">"zip"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"count_adjusted"</span> <span class="ot">=</span> count<span class="sc">*</span>res_ratio) <span class="co">#now we have theoretical count of applications per census tract</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#combine sgip_zip_census with acs data by tract</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>combined_all <span class="ot">&lt;-</span> <span class="fu">left_join</span>(sgip_zip_census, combine_census, <span class="at">by =</span> <span class="st">"tract"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"percapita_application"</span> <span class="ot">=</span> count_adjusted<span class="sc">/</span>population) <span class="sc">|&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"applications_per_thousand"</span> <span class="ot">=</span> (count_adjusted<span class="sc">/</span>population)<span class="sc">*</span><span class="dv">1000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"log_income"</span> <span class="ot">=</span> <span class="fu">log</span>(percapita_income)) <span class="sc">|&gt;</span> </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"income_group"</span> <span class="ot">=</span> <span class="fu">ifelse</span>(percapita_income <span class="sc">&lt;=</span> <span class="dv">48800</span>, <span class="st">"low income"</span>, <span class="st">"not low income"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="st">"oth_ratio"</span>, <span class="sc">-</span><span class="st">"tot_ratio"</span>, <span class="sc">-</span><span class="st">"bus_ratio"</span>))<span class="co">#low income in CA for 2020 48,800 threshold</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#take the combined_all data frame and consolidate back to apps per zip (averaging per capita income and summing population of each census tract into zip codes)</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>combined_by_zip <span class="ot">&lt;-</span> combined_all <span class="sc">|&gt;</span> </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(zip) <span class="sc">|&gt;</span> </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">applications =</span> <span class="fu">mean</span>(count, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">percapita_income =</span> <span class="fu">mean</span>(percapita_income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">population =</span> <span class="fu">sum</span>(population, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(percapita_income)) <span class="sc">|&gt;</span> </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"applications_per_1000_people"</span> <span class="ot">=</span> (applications<span class="sc">/</span>population)<span class="sc">*</span><span class="dv">1000</span>, <span class="st">"percapita_application"</span> <span class="ot">=</span> applications<span class="sc">/</span>population)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="regression-models" class="level5">
+<h5 class="anchored" data-anchor-id="regression-models"><strong>Regression Models</strong></h5>
+<p>Next, I ran different regression models to see what would best fit the data. I tried a simple linear regression, linear-log regression, log-log regression and polynomial regression. I concluded that the polynomial regression was best fit since visually the slope doesn’t look constant and the coefficients were significant. Here is the equation for the model:</p>
+<p><span class="math display">\[application_i =\beta_{0}+\beta_{1} \cdot income_i + \beta_{2} \cdot income_i^2 + \varepsilon_i\]</span></p>
+<p>I did notice that there was an outlier in the dataset, but when I removed the outlier and ran the polynomial regression it did not change the significance level of the coefficients. Because the outlier didn’t drastically change model results and there was no evidence that this data point was and outlier caused by data entry or measurement errors, I left it in.</p>
+<p>One notable limitation is that on all the models tested, including the polynomial regression, the residuals were not normally distributed with a long right tail. This means that the amount of error in the model is not consistent across the full range of my observed data and predictive accuracy of the model may be low.</p>
+</section>
+<section id="hypothesis-testing" class="level5">
+<h5 class="anchored" data-anchor-id="hypothesis-testing"><strong>Hypothesis Testing</strong></h5>
+<p>Additionally, I jointly tested the <span class="math inline">\(\beta_{1}\)</span> and <span class="math inline">\(\beta_{2}\)</span> coefficients using the linearHypothesis() function from the car package to test for no relationship between per capita income and applications per thousand people.</p>
+<p><span class="math inline">\(H_0: \beta_{1} = 0, \beta_{2} = 0\)</span></p>
+<p><span class="math inline">\(H_A: \beta_{j}\neq 0\)</span> for at least one <span class="math inline">\(j = 1,2\)</span></p>
+</section>
+</section>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results"><strong>Results</strong></h3>
+<section id="polynomial-regression" class="level5">
+<h5 class="anchored" data-anchor-id="polynomial-regression"><strong>Polynomial Regression</strong></h5>
+<p>From the below outputs of the model, I can see that the coefficient of per capita income is statistically significant at the 1% significance level (p-value = .001) and the coefficient of per capita income squared is statistically significant at the 5% significance level (p-value = 0.019). The R squared and adjusted R squared are really low at 0.017 and 0.016, respectively. This means that 1.6% of the variability in applications per thousand people is explained by per capita income. Having a low R squared value and a high significance for the coefficients in the model could mean that there is a statistically significant relationship between applications and income, but the predictive power of the model is low.</p>
+<div class="cell">
+<details>
+<summary>checkout the code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#polynomial regression</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>poly_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(applications_per_1000_people <span class="sc">~</span> percapita_income <span class="sc">+</span> <span class="fu">I</span>(percapita_income<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> combined_by_zip)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#store all the values of the model </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>R2_poly_model <span class="ot">=</span> <span class="fu">summary</span>(poly_model)<span class="sc">$</span>r.squared</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>R2_poly_adjusted <span class="ot">=</span> <span class="fu">summary</span>(poly_model)<span class="sc">$</span>adj.r.squared</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>intercept_poly <span class="ot">&lt;-</span> <span class="fu">summary</span>(poly_model)<span class="sc">$</span>coefficients[<span class="st">"(Intercept)"</span>, <span class="st">"Estimate"</span>]</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>b1_poly <span class="ot">&lt;-</span> <span class="fu">summary</span>(poly_model)<span class="sc">$</span>coefficients[<span class="st">"percapita_income"</span>, <span class="st">"Estimate"</span>]</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>b2_poly <span class="ot">&lt;-</span> <span class="fu">summary</span>(poly_model)<span class="sc">$</span>coefficients[<span class="st">"I(percapita_income^2)"</span>, <span class="st">"Estimate"</span>]</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>Predictors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Intercept"</span>, <span class="st">"per capita income"</span>, <span class="st">"(per capita income)^2"</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>Estimate <span class="ot">&lt;-</span> <span class="fu">signif</span>(<span class="fu">summary</span>(poly_model)<span class="sc">$</span>coefficients[,<span class="st">"Estimate"</span>], <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>SE <span class="ot">&lt;-</span> <span class="fu">signif</span>(<span class="fu">summary</span>(poly_model)<span class="sc">$</span>coefficients[,<span class="st">"Std. Error"</span>], <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">summary</span>(poly_model)<span class="sc">$</span>coefficients[,<span class="st">"Pr(&gt;|t|)"</span>], <span class="dv">3</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>poly_model_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Predictors, Estimate, SE, p)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#create table of regression output</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>gt_summary <span class="ot">&lt;-</span> poly_model_summary <span class="sc">|&gt;</span> </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Polynomial Model Output Summary"</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="st">"Observations: 1104"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="fu">paste</span>(<span class="st">"R^2/R^2 adjusted:"</span>, <span class="fu">round</span>(R2_poly_model,<span class="dv">3</span>), <span class="st">"/"</span>, <span class="fu">round</span>(R2_poly_adjusted,<span class="dv">3</span>))</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>gt_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<div id="odsiggrvcv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#odsiggrvcv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#odsiggrvcv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#odsiggrvcv .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#odsiggrvcv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#odsiggrvcv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odsiggrvcv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#odsiggrvcv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#odsiggrvcv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#odsiggrvcv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#odsiggrvcv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#odsiggrvcv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#odsiggrvcv .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#odsiggrvcv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#odsiggrvcv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#odsiggrvcv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#odsiggrvcv .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#odsiggrvcv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odsiggrvcv .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#odsiggrvcv .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#odsiggrvcv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odsiggrvcv .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#odsiggrvcv .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#odsiggrvcv .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odsiggrvcv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odsiggrvcv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#odsiggrvcv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#odsiggrvcv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odsiggrvcv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#odsiggrvcv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odsiggrvcv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#odsiggrvcv .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odsiggrvcv .gt_left {
+  text-align: left;
+}
+
+#odsiggrvcv .gt_center {
+  text-align: center;
+}
+
+#odsiggrvcv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#odsiggrvcv .gt_font_normal {
+  font-weight: normal;
+}
+
+#odsiggrvcv .gt_font_bold {
+  font-weight: bold;
+}
+
+#odsiggrvcv .gt_font_italic {
+  font-style: italic;
+}
+
+#odsiggrvcv .gt_super {
+  font-size: 65%;
+}
+
+#odsiggrvcv .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#odsiggrvcv .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#odsiggrvcv .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#odsiggrvcv .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#odsiggrvcv .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#odsiggrvcv .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#odsiggrvcv .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <td colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Polynomial Model Output Summary</td>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Predictors</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Estimate</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">SE</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">p</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Intercept</td>
+<td class="gt_row gt_right">-1.13e-01</td>
+<td class="gt_row gt_right">2.22e-01</td>
+<td class="gt_row gt_right">0.609</td></tr>
+    <tr><td class="gt_row gt_left">per capita income</td>
+<td class="gt_row gt_right">2.73e-05</td>
+<td class="gt_row gt_right">8.54e-06</td>
+<td class="gt_row gt_right">0.001</td></tr>
+    <tr><td class="gt_row gt_left">(per capita income)^2</td>
+<td class="gt_row gt_right">-1.68e-10</td>
+<td class="gt_row gt_right">7.16e-11</td>
+<td class="gt_row gt_right">0.019</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="4"> Observations: 1104</td>
+    </tr>
+    <tr>
+      <td class="gt_footnote" colspan="4"> R^2/R^2 adjusted: 0.017 / 0.016</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</div>
+</div>
+<p>When looking at the below graph and resulting formula, we can conclude that the effect of an increase on per capita income on applications per thousand people depends on the baseline level of per capita income.</p>
+<div class="cell">
+<details>
+<summary>checkout the code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> combined_by_zip, <span class="fu">aes</span>(<span class="at">x =</span> percapita_income, <span class="at">y =</span> applications_per_1000_people)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">2</span>), <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"Per Capita Income"</span>, <span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Per Capita Income"</span>, <span class="at">y =</span> <span class="st">"Applications Per 1000 People"</span>, <span class="at">title =</span> <span class="st">"SGIP Applications Per Thousand People and Income Per Capita (2020)"</span>) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><span class="math display">\[application_i = -0.113 + 2.73e^{-5}\cdot income_i -1.68e^{-10}\cdot income_i^2 + \varepsilon_i\]</span></p>
+<p>To interpret output from the model, we can look at the difference in predicted applications per thousand people between regions of per capita income.</p>
+<p>When moving from a per capita income of 15,000 to 25,000 (low income), predicted applications per thousand people increases by 0.21. When moving from a per capita income of 60,000 to 70,000 (middle income), predicted applications per thousand people decreases by 0.06. When moving from a per capita income of 100,000 to 110,000 (high income), predicted applications per thousand people decreases by 0.08.</p>
+<div class="cell">
+<details>
+<summary>checkout the code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create a function out of the polynomial regression</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>app_pred_function <span class="ot">&lt;-</span> <span class="cf">function</span>(income){</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(intercept_poly <span class="sc">+</span> (b1_poly <span class="sc">*</span> income) <span class="sc">+</span> (b2_poly <span class="sc">*</span> (income<span class="sc">^</span><span class="dv">2</span>)))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#predicted applications per 1000 people for per capita income of 15,000 vs. 25,000</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>pred_15000 <span class="ot">&lt;-</span> <span class="fu">app_pred_function</span>(<span class="at">income =</span> <span class="dv">15000</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>pred_25000 <span class="ot">&lt;-</span> <span class="fu">app_pred_function</span>(<span class="at">income =</span> <span class="dv">25000</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>diff_pred_low <span class="ot">&lt;-</span> pred_25000 <span class="sc">-</span> pred_15000</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>diff_pred_low</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#predicted applications per 1000 people for per capita income of 60,000 vs. 70,000</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>pred_60000 <span class="ot">&lt;-</span> <span class="fu">app_pred_function</span>(<span class="at">income =</span> <span class="dv">60000</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>pred_70000 <span class="ot">&lt;-</span> <span class="fu">app_pred_function</span>(<span class="at">income =</span> <span class="dv">70000</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>diff_pred_mid<span class="ot">&lt;-</span> pred_60000 <span class="sc">-</span> pred_70000</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>diff_pred_mid</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">#predicted applications per 1000 people for per capita income of 100,000 vs. 110,000</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>pred_100000 <span class="ot">&lt;-</span> <span class="fu">app_pred_function</span>(<span class="at">income =</span> <span class="dv">100000</span>)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>pred_110000 <span class="ot">&lt;-</span> <span class="fu">app_pred_function</span>(<span class="at">income =</span> <span class="dv">110000</span>)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>diff_pred_high <span class="ot">&lt;-</span> pred_110000<span class="sc">-</span> pred_100000</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>diff_pred_high</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="hypothesis-testing-1" class="level5">
+<h5 class="anchored" data-anchor-id="hypothesis-testing-1"><strong>Hypothesis Testing</strong></h5>
+<p>The resulting F-statistic (9.71) and p-value (6.60e-05) from the hypothesis testing indicate that I can reject my null hypothesis that both coefficients are 0 (i.e.&nbsp;there is no relationship between per capita income and applications per thousand people).</p>
+<div class="cell">
+<details>
+<summary>checkout the code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#jointly test if beta1 and beta 2 are 0, test that there is no relationship at all between y and x</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">linearHypothesis</span>(poly_model,<span class="fu">c</span>(<span class="st">"percapita_income = 0"</span>, <span class="st">"I(percapita_income^2) = 0"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="conclusion-and-next-steps" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion-and-next-steps"><strong>Conclusion and Next Steps</strong></h3>
+<p>From the results of this analysis, I can conclude that income does have an effect on SGIP applications. It is hard to definitely say that the SGIP program is or is not helping lower income communities since the slope of the model increases up until a certain point and then decreases. From previous research mentioned in the introduction, I would have thought the slope of the model would be consistently positive. This would have shown that the SGIP program was being utilized less by low income. The model does, however, conclude that the lowest income communities are not utilizing the SGIP program. This can be due to a number of factors including, but not limited to, energy storage systems often being paired with solar, requirements of home ownership, and a lengthy rebate process that are barriers to adoption of this program. Some further analysis that would help determine if the equity and equity resiliency funding is helping low income communities is to compare pre 2020 applications to post 2020 applications to get a sense of if this funding changed rebate participation among lower income communities. Also adding medical vulnerability and wildfire risk as predictors to the model to see if those communities are utilizing the program.</p>
 
 
 </section>
@@ -268,17 +955,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li id="fn1" role="doc-endnote"><p>Blair, Nate, Chad Augustine, Wesley Cole, et al.&nbsp;2022. Storage Futures Study: Key Learnings for the Coming Decades. Golden, CO: National Renewable Energy Laboratory. NREL/TP-7A40-81779. https://www.nrel.gov/docs/fy22osti/81779.pdf<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Auth, CPUC. “Participating in Self-Generation Incentive Program (SGIP).” California Public Utilities Commission, 2020, https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/demand-side-management/self-generation-incentive-program/participating-in-self-generation-incentive-program-sgip.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3" role="doc-endnote"><p>Vilgalys, Max. “Equity and Adaptation to Wildfire Risk: Evidence from California Public Safety Power Shutoffs.” (2022).<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>David P. Brown, Socioeconomic and demographic disparities in residential battery storage adoption: Evidence from California, Energy Policy, Volume 164, 2022, 112877, ISSN 0301-4215, https://doi.org/10.1016/j.enpol.2022.112877. (https://www.sciencedirect.com/science/article/pii/S0301421522001021)<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>https://www.californiadgstats.ca.gov/downloads/<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>https://walker-data.com/tidycensus/<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p>Research and Training Center on Disability in Rural Communities. (2017). Data limitations in the American Community Survey (ACS): The impact on rural disability research. Missoula, MT: The University of Montana Rural Institute for Inclusive Communities.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p>https://www.huduser.gov/portal/datasets/usps_crosswalk.html#data<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{lam2022,
   author = {Michelle Lam},
-  title = {SGIP {Policy} {Analysis}},
+  title = {California {Battery} {Rebate} {Program} {Analysis}},
   date = {2022-12-05},
   url = {https://michellelam777.github.io/posts/2022-12-05-sgip-policy-analysis/},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-lam2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
-Michelle Lam. 2022. <span>“SGIP Policy Analysis.”</span> December 5,
-2022. <a href="https://michellelam777.github.io/posts/2022-12-05-sgip-policy-analysis/">https://michellelam777.github.io/posts/2022-12-05-sgip-policy-analysis/</a>.
+Michelle Lam. 2022. <span>“California Battery Rebate Program
+Analysis.”</span> December 5, 2022. <a href="https://michellelam777.github.io/posts/2022-12-05-sgip-policy-analysis/">https://michellelam777.github.io/posts/2022-12-05-sgip-policy-analysis/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

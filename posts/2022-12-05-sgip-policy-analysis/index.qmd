@@ -1,6 +1,6 @@
 ---
-title: "SGIP Policy Analysis"
-description: "Exploring the effects of income on SGIP applications"
+title: "California Battery Rebate Program Analysis"
+description: "Exploring the effects of income on Self Generation Incentive Program (SGIP) applications"
 author:
   - name: Michelle Lam
     affiliation: Masters of Environmental Data Science (MEDS) @ The Bren School (UCSB)
@@ -9,7 +9,7 @@ date: 2022-12-05
 categories: [data science, R, energy storage]
 citation: 
   url: https://michellelam777.github.io/posts/2022-12-05-sgip-policy-analysis/
-draft: true
+draft: false
 format:
   html: 
     code-fold: true
@@ -20,17 +20,16 @@ page-layout: article
 image: energy-storage.jpeg
 ---
 
-### The Question
+### **The Question**
 
 #### **What is the effect of income on SGIP applications?**
 
-### Introduction
+### **Introduction**
 
-::: g-col-8
-Energy storage is poised for rapid growth and will play a major role in the decarbonization of our energy industry. [^1] The California Public Utilities Commission (CPUC) created the Self Generation Incentive Program (SGIP), in part, to provide rebates to people and organizations looking to install energy storage systems. In 2020, they introduced new funding categories that provide higher rebates under "Equity" and "Equity Resilience" aimed to help lower-income, medically vulnerable, and at risk for fire communities pay for a battery. [^2] Given that lower socioeconomic communities are shown to experience more frequent Public Safety Power Shutoffs (PSPS), [^3] an energy storage system could be critical to avoiding the adverse effects of a power outage (e.g. food insecurity).
+Energy storage is poised for rapid growth and will play a major role in the decarbonization of our energy industry. [^1] The California Public Utilities Commission (CPUC) created the Self Generation Incentive Program (SGIP), in part, to provide rebates to people and organizations looking to install energy storage systems. In 2020, they introduced new funding categories that provide higher rebates under "Equity" and "Equity Resiliency" aimed to help lower-income, medically vulnerable, and at risk for fire communities pay for a battery. [^2] Given that lower socioeconomic communities are shown to experience more frequent Public Safety Power Shutoffs (PSPS), [^3] an energy storage system could be critical to avoiding the adverse effects of a power outage (e.g. food insecurity). There has been a study showing the socioeconomic disparities in residential battery storage adoption, [^4] but there hasn't been targeted analysis on SGIP participation post equity and equity resiliency funding becoming available.
 
-Examining if there is an effect of income on SGIP application, could help inform the effectiveness of this rebate program and subsequent policy decisions.
-:::
+Examining if there is an effect of income on SGIP applications for 2020, could help inform the effectiveness of the new funding categories and subsequent policy decisions.
+
 
 [^1]: Blair, Nate, Chad Augustine, Wesley Cole, et al. 2022. Storage Futures Study: Key Learnings for the Coming Decades. Golden, CO: National Renewable Energy Laboratory. NREL/TP-7A40-81779. https://www.nrel.gov/docs/fy22osti/81779.pdf
 
@@ -38,14 +37,17 @@ Examining if there is an effect of income on SGIP application, could help inform
 
 [^3]: Vilgalys, Max. "Equity and Adaptation to Wildfire Risk: Evidence from California Public Safety Power Shutoffs." (2022).
 
-### Data
+[^4]: David P. Brown, Socioeconomic and demographic disparities in residential battery storage adoption: Evidence from California, Energy Policy, Volume 164, 2022, 112877, ISSN 0301-4215, https://doi.org/10.1016/j.enpol.2022.112877.
+(https://www.sciencedirect.com/science/article/pii/S0301421522001021)
 
-::: g-col-8
-**SGIP Applications**
+### **Data**
 
-SGIP application data is reported on a weekly basis via an excel file. For this analysis, SGIP applications were filtered down to just residential battery applications for 2020. The data was then summarized by zip code to get total count of applications for each zip code.
-:::
+##### **SGIP Applications**
 
+I downloaded SGIP application data from the California Distributed Energy Statistics site. [^5] Application data is reported on a weekly basis via an excel file. For this analysis, SGIP applications were filtered down to just residential and single family battery applications for 2020. The data was then summarized by zip code to get total count of applications for each zip code.
+I did notice that the metadata didn't always correctly specify the categorical values in each variable, so there is room for error in categorization. 
+
+When visualizing SGIP applications for 2020 you can see that over 40% of applications fall under the Equity Resiliency category. 
 ```{r,warning=FALSE, message=FALSE, results='hide'}
 #loading the necessary pacakges
 library(tidyverse)
@@ -56,6 +58,7 @@ library(janitor)
 library(lubridate)
 library(modelr)
 library(gridExtra)
+library(car)
 
 #setting file path for root directory
 rootdir <- ("/Users/michelle/Documents/UCSB Grad School/Courses/eds_222/eds222_final_project")
@@ -64,4 +67,236 @@ datadir <-(file.path(rootdir,"data"))
 #store and set API key to access tidycensus
 census_token <- Sys.getenv('CENSUS_KEY')
 census_api_key(census_token)
+
+#read in the SGIP data
+sgip <- read_csv(file.path(datadir,"sgip_weekly_data.csv")) |> 
+  janitor::clean_names()
+
+#filter down to rebates for just residential electrochemcial storage that were not cancelled, format date and zip
+sgip_res_battery <- sgip |> 
+  filter(equipment_type == "Electrochemical Storage", host_customer_sector %in% c("Residential", "Single Family"), budget_classification != "Cancelled") |>
+  select("city", "county", "zip", "date_received", "budget_category", "host_customer_sector") |> 
+  mutate("date_received" = str_sub(date_received, 1, 8)) |> 
+  mutate("date_received" = as.Date(date_received, format = "%m/%d/%y")) |>
+  mutate("year_received" = year(date_received)) |>
+  mutate("month_received" = month(date_received)) |> 
+  mutate("zip" = ifelse(
+    str_length(zip) == 10, 
+    substring(zip, 1, nchar(zip)-5),
+    zip))
+
+#create sgip dataset filtered for 2020
+sgip_2020 <- sgip_res_battery |> 
+  filter(year_received == 2020)
+
+# create dataframe showing count of applications in each zip code for 2020
+sgip_zip_2020 <- sgip_2020 |> 
+  group_by(zip) |> 
+  summarize(count = n())
+
+#create a summary data frame showing applications by budget category
+sgip_2020_budget <- sgip_2020 |> 
+  group_by(budget_category) |> 
+  summarize(count = n()) |> 
+  mutate(percent = round(((count/sum(count))*100),2))
+
+#plot percent SGIP applications by category
+ggplot(sgip_2020_budget, aes(y = budget_category, x = percent)) +
+  geom_bar(stat = "identity", fill = "skyblue3") +
+  labs(title = "Percent of SGIP Applications in Each Budget Category (2020)", y = "Budget Category", x = "Percent of Applications") + 
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
+
+##### **American Community Survey (ACS)**
+
+I accessed American Community Survey (ACS) data containing per capita income and population for each census tract in California through an API and the tidycensus package in R.[^6] Some limitations of the ACS data include that it is collected by selecting a random sample of addresses and therefore is not a true census of the population and data might not be as available/reliable for rural areas.[^7]
+
+```{r,warning=FALSE, message=FALSE, results='hide'}
+#access ACS data variables for 2020 year 
+v20 <- load_variables(2020, "acs5", cache = TRUE)
+
+#read in per capita income data for census tracts in CA
+ca_pc_income_tract <- get_acs(geography = "tract",
+                            variables = c(percapita_income = "B19301_001"),
+                            state = "CA",
+                            year = 2020)
+
+#clean and format per capita income data frame
+ca_pc_income_tract_clean <- ca_pc_income_tract |> 
+  select(c("GEOID", "NAME", "estimate")) |> 
+  rename(percapita_income = "estimate")
+
+#read in population data for census tracts in CA
+ca_pop_tract <- get_acs(geography = "tract",
+                        variables = c(population = "B01003_001"),
+                        state = "CA",
+                        year = 2020)
+
+#clean and format population data frame 
+ca_pop_tract_clean <- ca_pop_tract |> 
+  select(c("GEOID", "NAME", "estimate")) |> 
+  rename(population = "estimate")
+
+#combine per capita income and population data frames
+combine_census <- cbind(ca_pc_income_tract_clean, ca_pop_tract_clean$population) |> 
+  rename(population = "ca_pop_tract_clean$population", tract = "GEOID")
+```
+
+##### **U.S. Department of Housing and Urban Development (HUD)**
+
+I downloaded the crosswalk file in the form of a csv from the U.S. HUD site. [^8] The file relates zip codes to census tracts and was utilized to match up application data (zip code level) to per capita income and population data (census tract level). 
+
+```{r,warning=FALSE, message=FALSE, results='hide'}
+#read in crosswalk file to use when matching zip codes to census tracts
+crosswalk <- read_csv(file.path(datadir,"ZIP_TRACT_122020.csv")) |> 
+  janitor::clean_names()
+```
+
+[^5]: https://www.californiadgstats.ca.gov/downloads/
+[^6]: https://walker-data.com/tidycensus/
+[^7]: Research and Training Center on Disability in Rural Communities. (2017). Data limitations in the American
+Community Survey (ACS): The impact on rural disability research. Missoula, MT: The University of
+Montana Rural Institute for Inclusive Communities.
+[^8]: https://www.huduser.gov/portal/datasets/usps_crosswalk.html#data
+
+### **Analysis**
+
+To analyze the effect of income on SGIP applications, I utilized the three datasets outlined above to create a dataframe showing applications per thousand people and per capita income for each zip code. I used population of each zip code to calculate the applications per thousand people in order to account for the fact that higher income areas have more people and to create a more appropriate scale for interpretation.
+
+```{r,warning=FALSE, message=FALSE, results='hide'}
+#combine sgip_zip_2020 and crosswalk file by zip to get a data frame with sgip applications per census tract
+#because there are multiple census tracts for one zip code, use the res_ratio to allocate what portion of the count of SGIP applications should be allocated to one census tract
+sgip_zip_census <- left_join(sgip_zip_2020, crosswalk, by = "zip") |> 
+  mutate("count_adjusted" = count*res_ratio) #now we have theoretical count of applications per census tract
+
+#combine sgip_zip_census with acs data by tract
+combined_all <- left_join(sgip_zip_census, combine_census, by = "tract") |> 
+  mutate("percapita_application" = count_adjusted/population) |>
+  mutate("applications_per_thousand" = (count_adjusted/population)*1000) |>
+  mutate("log_income" = log(percapita_income)) |> 
+  mutate("income_group" = ifelse(percapita_income <= 48800, "low income", "not low income")) |> 
+  select(c(-"oth_ratio", -"tot_ratio", -"bus_ratio"))#low income in CA for 2020 48,800 threshold
+
+#take the combined_all data frame and consolidate back to apps per zip (averaging per capita income and summing population of each census tract into zip codes)
+combined_by_zip <- combined_all |> 
+  group_by(zip) |> 
+  summarize(applications = mean(count, na.rm = TRUE), percapita_income = mean(percapita_income, na.rm = TRUE), population = sum(population, na.rm = TRUE)) |> 
+  filter(!is.na(percapita_income)) |> 
+  mutate("applications_per_1000_people" = (applications/population)*1000, "percapita_application" = applications/population)
+```
+
+##### **Regression Models**
+ 
+Next, I ran different regression models to see what would best fit the data. I tried a simple linear regression, linear-log regression, log-log regression and polynomial regression. I concluded that the polynomial regression was best fit since visually the slope doesn't look constant and the coefficients were significant. Here is the equation for the model: 
+$$application_i =\beta_{0}+\beta_{1} \cdot income_i + \beta_{2} \cdot income_i^2 + \varepsilon_i$$
+I did notice that there was an outlier in the dataset, but when I removed the outlier and ran the polynomial regression it did not change the significance level of the coefficients. Because the outlier didn't drastically change model results and there was no evidence that this data point was and outlier caused by data entry or measurement errors, I left it in. 
+
+One notable limitation is that on all the models tested, including the polynomial regression, the residuals were not normally distributed with a long right tail. This means that the amount of error in the model is not consistent across the full range of my observed data and predictive accuracy of the model may be low.
+
+##### **Hypothesis Testing**
+
+Additionally, I jointly tested the $\beta_{1}$ and $\beta_{2}$ coefficients using the linearHypothesis() function from the car package to test for no relationship between per capita income and applications per thousand people. 
+
+$H_0: \beta_{1} = 0,  \beta_{2} = 0$
+
+$H_A: \beta_{j}\neq 0$ for at least one $j = 1,2$
+
+### **Results**
+
+##### **Polynomial Regression**
+
+From the below outputs of the model, I can see that the coefficient of per capita income is statistically significant at the 1% significance level (p-value = .001) and the coefficient of per capita income squared is statistically significant at the 5% significance level (p-value = 0.019). 
+The R squared and adjusted R squared are really low at 0.017 and 0.016, respectively. This means that 1.6% of the variability in applications per thousand people is explained by per capita income. Having a low R squared value and a high significance for the coefficients in the model could mean that there is a statistically significant relationship between applications and income, but the predictive power of the model is low. 
+
+```{r,warning=FALSE, message=FALSE}
+#polynomial regression
+poly_model <- lm(applications_per_1000_people ~ percapita_income + I(percapita_income^2), data = combined_by_zip)
+
+#store all the values of the model 
+R2_poly_model = summary(poly_model)$r.squared
+R2_poly_adjusted = summary(poly_model)$adj.r.squared
+
+intercept_poly <- summary(poly_model)$coefficients["(Intercept)", "Estimate"]
+b1_poly <- summary(poly_model)$coefficients["percapita_income", "Estimate"]
+b2_poly <- summary(poly_model)$coefficients["I(percapita_income^2)", "Estimate"]
+
+Predictors <- c("Intercept", "per capita income", "(per capita income)^2")
+Estimate <- signif(summary(poly_model)$coefficients[,"Estimate"], digits = 3)
+SE <- signif(summary(poly_model)$coefficients[,"Std. Error"], digits = 3)
+p <- round(summary(poly_model)$coefficients[,"Pr(>|t|)"], 3)
+
+poly_model_summary <- data.frame(Predictors, Estimate, SE, p)
+
+#create table of regression output
+gt_summary <- poly_model_summary |> 
+  gt() |> 
+  tab_header(
+    title = "Polynomial Model Output Summary"
+  ) |> 
+  tab_footnote(
+    footnote = "Observations: 1104") |> 
+  tab_footnote(
+    footnote = paste("R^2/R^2 adjusted:", round(R2_poly_model,3), "/", round(R2_poly_adjusted,3))
+  )
+gt_summary
+```
+
+When looking at the below graph and resulting formula, we can conclude that the effect of an increase on per capita income on applications per thousand people depends on the baseline level of per capita income.
+
+```{r}
+#plot
+ggplot(data = combined_by_zip, aes(x = percapita_income, y = applications_per_1000_people)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula = y ~ x + I(x^2), size = 1) +
+  scale_x_continuous(name="Per Capita Income", labels = scales::comma) +
+  labs(x = "Per Capita Income", y = "Applications Per 1000 People", title = "SGIP Applications Per Thousand People and Income Per Capita (2020)") +
+  theme_minimal()
+```
+
+$$application_i = -0.113 + 2.73e^{-5}\cdot income_i -1.68e^{-10}\cdot income_i^2 + \varepsilon_i$$
+
+To interpret output from the model, we can look at the difference in predicted applications per thousand people between regions of per capita income.
+
+When moving from a per capita income of 15,000 to 25,000 (low income), predicted applications per thousand people increases by 0.21. When moving from a per capita income of 60,000 to 70,000 (middle income), predicted applications per thousand people decreases by 0.06. When moving from a per capita income of 100,000 to 110,000 (high income), predicted applications per thousand people decreases by 0.08.
+
+```{r,warning=FALSE, message=FALSE, results='hide'}
+#create a function out of the polynomial regression
+app_pred_function <- function(income){
+  return(intercept_poly + (b1_poly * income) + (b2_poly * (income^2)))
+}
+
+#predicted applications per 1000 people for per capita income of 15,000 vs. 25,000
+pred_15000 <- app_pred_function(income = 15000)
+pred_25000 <- app_pred_function(income = 25000)
+
+diff_pred_low <- pred_25000 - pred_15000
+diff_pred_low
+
+#predicted applications per 1000 people for per capita income of 60,000 vs. 70,000
+pred_60000 <- app_pred_function(income = 60000)
+pred_70000 <- app_pred_function(income = 70000)
+
+diff_pred_mid<- pred_60000 - pred_70000
+diff_pred_mid
+
+#predicted applications per 1000 people for per capita income of 100,000 vs. 110,000
+pred_100000 <- app_pred_function(income = 100000)
+pred_110000 <- app_pred_function(income = 110000)
+
+diff_pred_high <- pred_110000- pred_100000
+diff_pred_high
+```
+
+##### **Hypothesis Testing**
+
+The resulting F-statistic (9.71) and p-value (6.60e-05) from the hypothesis testing indicate that I can reject my null hypothesis that both coefficients are 0 (i.e. there is no relationship between per capita income and applications per thousand people).
+
+```{r,warning=FALSE, message=FALSE, results='hide'}
+#jointly test if beta1 and beta 2 are 0, test that there is no relationship at all between y and x
+linearHypothesis(poly_model,c("percapita_income = 0", "I(percapita_income^2) = 0"))
+```
+
+### **Conclusion and Next Steps**
+
+From the results of this analysis, I can conclude that income does have an effect on SGIP applications. It is hard to definitely say that the SGIP program is or is not helping lower income communities since the slope of the model increases up until a certain point and then decreases. From previous research mentioned in the introduction, I would have thought the slope of the model would be consistently positive. This would have shown that the SGIP program was being utilized less by low income. The model does, however, conclude that the lowest income communities are not utilizing the SGIP program. This can be due to a number of factors including, but not limited to, energy storage systems often being paired with solar, requirements of home ownership, and a lengthy rebate process that are barriers to adoption of this program. Some further analysis that would help determine if the equity and equity resiliency funding is helping low income communities is to compare pre 2020 applications to post 2020 applications to get a sense of if this funding changed rebate participation among lower income communities. Also adding medical vulnerability and wildfire risk as predictors to the model to see if those communities are utilizing the program. 
