@@ -17,7 +17,7 @@ format:
     code-overflow: wrap
     code-block-bg: "#e3f3ff"
 page-layout: article
-image: energy-storage.jpeg
+image: battery-day-night.gif
 ---
 
 ### **The Question**
