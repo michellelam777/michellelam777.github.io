@@ -26,10 +26,7 @@ image: energy-storage.jpeg
 
 ### **Introduction**
 
-Energy storage is poised for rapid growth and will play a major role in the decarbonization of our energy industry. [^1] The California Public Utilities Commission (CPUC) created the Self Generation Incentive Program (SGIP), in part, to provide rebates to people and organizations looking to install energy storage systems. In 2020, they introduced new funding categories that provide higher rebates under "Equity" and "Equity Resiliency" aimed to help lower-income, medically vulnerable, and at risk for fire communities pay for a battery. [^2] Given that lower socioeconomic communities are shown to experience more frequent Public Safety Power Shutoffs (PSPS), [^3] an energy storage system could be critical to avoiding the adverse effects of a power outage (e.g. food insecurity). There has been a study showing the socioeconomic disparities in residential battery storage adoption, [^4] but there hasn't been targeted analysis on SGIP participation post equity and equity resiliency funding becoming available.
-
-Examining if there is an effect of income on SGIP applications for 2020, could help inform the effectiveness of the new funding categories and subsequent policy decisions.
-
+Energy storage is poised for rapid growth and will play a major role in the decarbonization of our energy industry. [^1] The California Public Utilities Commission (CPUC) created the Self Generation Incentive Program (SGIP), in part, to provide rebates to people and organizations looking to install energy storage systems. In September of 2020, they introduced new funding categories that provide higher rebates under "Equity" and "Equity Resiliency" aimed to help lower-income, medically vulnerable, and at risk for fire communities pay for a battery. [^2] Given that lower socioeconomic communities are shown to experience more frequent Public Safety Power Shutoffs (PSPS), [^3] an energy storage system could be critical to avoiding the adverse effects of a power outage (e.g. food insecurity). There has been a study showing the socioeconomic disparities in residential battery storage adoption, [^4] but there hasn't been targeted analysis on SGIP participation post equity and equity resiliency funding becoming available.
 
 [^1]: Blair, Nate, Chad Augustine, Wesley Cole, et al. 2022. Storage Futures Study: Key Learnings for the Coming Decades. Golden, CO: National Renewable Energy Laboratory. NREL/TP-7A40-81779. https://www.nrel.gov/docs/fy22osti/81779.pdf
 
@@ -37,17 +34,20 @@ Examining if there is an effect of income on SGIP applications for 2020, could h
 
 [^3]: Vilgalys, Max. "Equity and Adaptation to Wildfire Risk: Evidence from California Public Safety Power Shutoffs." (2022).
 
-[^4]: David P. Brown, Socioeconomic and demographic disparities in residential battery storage adoption: Evidence from California, Energy Policy, Volume 164, 2022, 112877, ISSN 0301-4215, https://doi.org/10.1016/j.enpol.2022.112877.
-(https://www.sciencedirect.com/science/article/pii/S0301421522001021)
+[^4]: David P. Brown, Socioeconomic and demographic disparities in residential battery storage adoption: Evidence from California, Energy Policy, Volume 164, 2022, 112877, ISSN 0301-4215, https://doi.org/10.1016/j.enpol.2022.112877. (https://www.sciencedirect.com/science/article/pii/S0301421522001021)
+
+Examining if there is an effect of income on SGIP applications for 2020, could help inform the effectiveness of the new funding categories and subsequent policy decisions.
 
 ### **Data**
 
 ##### **SGIP Applications**
 
-I downloaded SGIP application data from the California Distributed Energy Statistics site. [^5] Application data is reported on a weekly basis via an excel file. For this analysis, SGIP applications were filtered down to just residential and single family battery applications for 2020. The data was then summarized by zip code to get total count of applications for each zip code.
-I did notice that the metadata didn't always correctly specify the categorical values in each variable, so there is room for error in categorization. 
+I downloaded SGIP application data from the California Distributed Energy Statistics site. [^5] Application data is reported on a weekly basis via an excel file. For this analysis, SGIP applications were filtered down to just residential and single family battery applications for 2020. The data was then summarized by zip code to get total count of applications for each zip code. I did notice that the metadata didn't always correctly specify the categorical values in each variable, so there is room for error in categorization.
 
-When visualizing SGIP applications for 2020 you can see that over 40% of applications fall under the Equity Resiliency category. 
+[^5]: https://www.californiadgstats.ca.gov/downloads/
+
+When visualizing SGIP applications for 2020 you can see that over 40% of applications fall under the Equity Resiliency category.
+
 ```{r,warning=FALSE, message=FALSE, results='hide'}
 #loading the necessary pacakges
 library(tidyverse)
@@ -112,6 +112,10 @@ ggplot(sgip_2020_budget, aes(y = budget_category, x = percent)) +
 
 I accessed American Community Survey (ACS) data containing per capita income and population for each census tract in California through an API and the tidycensus package in R.[^6] Some limitations of the ACS data include that it is collected by selecting a random sample of addresses and therefore is not a true census of the population and data might not be as available/reliable for rural areas.[^7]
 
+[^6]: https://walker-data.com/tidycensus/
+
+[^7]: Research and Training Center on Disability in Rural Communities. (2017). Data limitations in the American Community Survey (ACS): The impact on rural disability research. Missoula, MT: The University of Montana Rural Institute for Inclusive Communities.
+
 ```{r,warning=FALSE, message=FALSE, results='hide'}
 #access ACS data variables for 2020 year 
 v20 <- load_variables(2020, "acs5", cache = TRUE)
@@ -145,20 +149,15 @@ combine_census <- cbind(ca_pc_income_tract_clean, ca_pop_tract_clean$population)
 
 ##### **U.S. Department of Housing and Urban Development (HUD)**
 
-I downloaded the crosswalk file in the form of a csv from the U.S. HUD site. [^8] The file relates zip codes to census tracts and was utilized to match up application data (zip code level) to per capita income and population data (census tract level). 
+I downloaded the crosswalk file in the form of a csv from the U.S. HUD site. [^8] The file relates zip codes to census tracts and was utilized to match up application data (zip code level) to per capita income and population data (census tract level).
+
+[^8]: https://www.huduser.gov/portal/datasets/usps_crosswalk.html#data
 
 ```{r,warning=FALSE, message=FALSE, results='hide'}
 #read in crosswalk file to use when matching zip codes to census tracts
 crosswalk <- read_csv(file.path(datadir,"ZIP_TRACT_122020.csv")) |> 
   janitor::clean_names()
 ```
-
-[^5]: https://www.californiadgstats.ca.gov/downloads/
-[^6]: https://walker-data.com/tidycensus/
-[^7]: Research and Training Center on Disability in Rural Communities. (2017). Data limitations in the American
-Community Survey (ACS): The impact on rural disability research. Missoula, MT: The University of
-Montana Rural Institute for Inclusive Communities.
-[^8]: https://www.huduser.gov/portal/datasets/usps_crosswalk.html#data
 
 ### **Analysis**
 
@@ -187,18 +186,16 @@ combined_by_zip <- combined_all |>
 ```
 
 ##### **Regression Models**
- 
-Next, I ran different regression models to see what would best fit the data. I tried a simple linear regression, linear-log regression, log-log regression and polynomial regression. I concluded that the polynomial regression was best fit since visually the slope doesn't look constant and the coefficients were significant. Here is the equation for the model: 
-$$application_i =\beta_{0}+\beta_{1} \cdot income_i + \beta_{2} \cdot income_i^2 + \varepsilon_i$$
-I did notice that there was an outlier in the dataset, but when I removed the outlier and ran the polynomial regression it did not change the significance level of the coefficients. Because the outlier didn't drastically change model results and there was no evidence that this data point was and outlier caused by data entry or measurement errors, I left it in. 
+
+Next, I ran different regression models to see what would best fit the data. I tried a simple linear regression, linear-log regression, log-log regression and polynomial regression. I concluded that the polynomial regression was best fit since visually the slope doesn't look constant and the coefficients were significant. Here is the equation for the model: $$application_i =\beta_{0}+\beta_{1} \cdot income_i + \beta_{2} \cdot income_i^2 + \varepsilon_i$$ I did notice that there was an outlier in the dataset, but when I removed the outlier and ran the polynomial regression it did not change the significance level of the coefficients. Because the outlier didn't drastically change model results and there was no evidence that this data point was and outlier caused by data entry or measurement errors, I left it in.
 
 One notable limitation is that on all the models tested, including the polynomial regression, the residuals were not normally distributed with a long right tail. This means that the amount of error in the model is not consistent across the full range of my observed data and predictive accuracy of the model may be low.
 
 ##### **Hypothesis Testing**
 
-Additionally, I jointly tested the $\beta_{1}$ and $\beta_{2}$ coefficients using the linearHypothesis() function from the car package to test for no relationship between per capita income and applications per thousand people. 
+Additionally, I jointly tested the $\beta_{1}$ and $\beta_{2}$ coefficients using the linearHypothesis() function from the car package to test for no relationship between per capita income and applications per thousand people.
 
-$H_0: \beta_{1} = 0,  \beta_{2} = 0$
+$H_0: \beta_{1} = 0, \beta_{2} = 0$
 
 $H_A: \beta_{j}\neq 0$ for at least one $j = 1,2$
 
@@ -206,8 +203,7 @@ $H_A: \beta_{j}\neq 0$ for at least one $j = 1,2$
 
 ##### **Polynomial Regression**
 
-From the below outputs of the model, I can see that the coefficient of per capita income is statistically significant at the 1% significance level (p-value = .001) and the coefficient of per capita income squared is statistically significant at the 5% significance level (p-value = 0.019). 
-The R squared and adjusted R squared are really low at 0.017 and 0.016, respectively. This means that 1.6% of the variability in applications per thousand people is explained by per capita income. Having a low R squared value and a high significance for the coefficients in the model could mean that there is a statistically significant relationship between applications and income, but the predictive power of the model is low. 
+From the below outputs of the model, I can see that the coefficient of per capita income is statistically significant at the 1% significance level (p-value = .001) and the coefficient of per capita income squared is statistically significant at the 5% significance level (p-value = 0.019). The R squared and adjusted R squared are really low at 0.017 and 0.016, respectively. This means that 1.6% of the variability in applications per thousand people is explained by per capita income. Having a low R squared value and a high significance for the coefficients in the model could mean that there is a statistically significant relationship between applications and income, but the predictive power of the model is low.
 
 ```{r,warning=FALSE, message=FALSE}
 #polynomial regression
@@ -299,4 +295,4 @@ linearHypothesis(poly_model,c("percapita_income = 0", "I(percapita_income^2) = 0
 
 ### **Conclusion and Next Steps**
 
-From the results of this analysis, I can conclude that income does have an effect on SGIP applications. It is hard to definitely say that the SGIP program is or is not helping lower income communities since the slope of the model increases up until a certain point and then decreases. From previous research mentioned in the introduction, I would have thought the slope of the model would be consistently positive. This would have shown that the SGIP program was being utilized less by low income. The model does, however, conclude that the lowest income communities are not utilizing the SGIP program. This can be due to a number of factors including, but not limited to, energy storage systems often being paired with solar, requirements of home ownership, and a lengthy rebate process that are barriers to adoption of this program. Some further analysis that would help determine if the equity and equity resiliency funding is helping low income communities is to compare pre 2020 applications to post 2020 applications to get a sense of if this funding changed rebate participation among lower income communities. Also adding medical vulnerability and wildfire risk as predictors to the model to see if those communities are utilizing the program. 
+From the results of this analysis, I can conclude that income does have an effect on SGIP applications. It is hard to definitely say that the SGIP program is or is not helping lower income communities since the slope of the model increases up until a certain point and then decreases. From previous research mentioned in the introduction, I would have thought the slope of the model would be consistently positive. This would have shown that the SGIP program was being utilized less by low income. The model does, however, conclude that the lowest income communities are not utilizing the SGIP program. This can be due to a number of factors including, but not limited to, energy storage systems often being paired with solar, requirements of home ownership, and a lengthy rebate process that are barriers to adoption of this program. Some further analysis that would help determine if the equity and equity resiliency funding is helping low income communities is to compare pre 2020 applications to post 2020 applications to get a sense of if this funding changed rebate participation among lower income communities. Also adding medical vulnerability and wildfire risk as predictors to the model to see if those communities are utilizing the program.
