@@ -1,0 +1,23 @@
+---
+title: "California Battery Rebate Program Ethics"
+description: "A Closer Look at the Data Behind the Self Generation Incentive Program (SGIP) and its Effectiveness"
+author:
+  - name: Michelle Lam
+    affiliation: Masters of Environmental Data Science (MEDS) @ The Bren School (UCSB)
+    affiliation-url: https://ucsb-meds.github.io/
+date: 2022-12-07
+categories: [data science, ethics, energy storage]
+citation: 
+  url: https://michellelam777.github.io/posts/2022-12-07-sgip-data-ethics/
+draft: true
+format:
+  html: 
+    code-fold: true
+    code-summary: "checkout the code"
+    code-overflow: wrap
+    code-block-bg: "#e3f3ff"
+page-layout: article
+image: cpuc.png
+---
+
+
