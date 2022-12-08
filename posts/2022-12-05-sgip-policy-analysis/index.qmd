@@ -192,9 +192,9 @@ combined_by_zip <- combined_all |>
 
 Next, I ran different regression models to see what would best fit the data. I started with a simple linear regression, but noticed that the median per capita income and the applications per thousand people observations were not normally distributed with a right tail (see supporting figures). Therefore, I ran a linear-log regression and log-log regression. The residuals from these models were not normally distributed so I ran a polynomial regression. The residuals on the polynomial regression were not normal either (see supporting figures), but I concluded that the polynomial regression was best fit since visually the slope doesn't look constant and the coefficients were significant. Here is the equation for the model: $$application_i =\beta_{0}+\beta_{1} \cdot income_i + \beta_{2} \cdot income_i^2 + \varepsilon_i$$
 
-I did notice that there was an outlier in the dataset, but when I removed the outlier and ran the polynomial regression it did not change the significance of the coefficients. Because the outlier didn't drastically change model results and there was no evidence that this data point was and outlier caused by data entry or measurement errors, I left it in.
+I did notice that there was an outlier in the dataset, but when I removed the outlier and ran the polynomial regression it did not change the significance of the coefficients. Because the outlier didn't drastically change model results and there was no evidence that this data point was an outlier caused by data entry or measurement errors, I left it in.
 
-As mentioned above, on all the models tested the residuals were not normally distributed with a long right tail. This means that the amount of error in the model is not consistent across the full range of my observed data and the model's ability to accurately predict applications per thousand people at a given median per capita income is low.
+As mentioned above, on all the models tested the residuals were not normally distributed with a long right tail. This means that the amount of error in the model is not consistent across the full range of my observed data and the model's ability to accurately predict applications per thousand people at a given median per capita income could be low.
 
 ##### Hypothesis Testing
 
