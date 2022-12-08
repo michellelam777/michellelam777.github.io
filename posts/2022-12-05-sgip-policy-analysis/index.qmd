@@ -165,7 +165,7 @@ crosswalk <- read_csv(file.path(datadir,"ZIP_TRACT_122020.csv")) |>
 
 ### Analysis
 
-To analyze the effect of income on SGIP applications, I utilized the three datasets outlined above to create a data frame showing applications per thousand people and per capita income for each zip code. When aggregating from census tract level to zip code level, I took the median per capita income and summed the populations in each census tract to get income and population variables for each zip code. I used population of each zip code to calculate the applications per thousand people in order to account for the fact that higher income areas have more people and to create a more appropriate scale for interpretation. I did notice that after combining the datasets, there were 1933 NA values for per capita income and 1896 NA values for population out of the 10978 census tracts in the dataset. This could lead to inaccuracies since observations are analyzed on the zip code level and aggregation of the census tract data was performed.
+To analyze the effect of income on SGIP applications, I utilized the three datasets outlined above to create a data frame showing applications per thousand people and per capita income for each zip code. When aggregating from census tract level to zip code level, I took the median per capita income and summed the populations in each census tract to get income and population variables for each zip code. I used population of each zip code to calculate the applications per thousand people in order to account for the fact that higher income areas have more people and to create a more appropriate scale for interpretation. I did notice that after combining the datasets, there were 1,933 NA values for per capita income and 1,896 NA values for population out of the 10,978 census tracts in the dataset. This could lead to inaccuracies since observations are analyzed on the zip code level and aggregation of the census tract data was performed.
 
 ```{r,warning=FALSE, message=FALSE, results='hide'}
 #combine sgip_zip_2020 and crosswalk file by zip to get a data frame with sgip applications per census tract
@@ -259,7 +259,7 @@ $$application_i = -0.169 + 2.95e^{-5}\cdot income_i -1.80e^{-10}\cdot income_i^2
 
 To interpret output from the model, we can look at the difference in predicted applications per thousand people between regions of median per capita income.
 
-When moving from a median per capita income of 15,000 to 25,000 (low income), predicted applications per thousand people increases by 0.22. When moving from a median per capita income of 60,000 to 70,000 (middle income), predicted applications per thousand people increases by 0.06. When moving from a median per capita income of 100,000 to 110,000 (high income), predicted applications per thousand people decreases by 0.08.
+When moving from a median per capita income of \$15,000 to \$25,000 (low income), predicted applications per thousand people increases by 0.22. When moving from a median per capita income of \$60,000 to \$70,000 (middle income), predicted applications per thousand people increases by 0.06. When moving from a median per capita income of \$100,000 to \$110,000 (high income), predicted applications per thousand people decreases by 0.08.
 
 ```{r,warning=FALSE, message=FALSE, results='hide'}
 #create a function out of the polynomial regression
