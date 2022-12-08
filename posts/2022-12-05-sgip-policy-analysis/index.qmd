@@ -304,8 +304,6 @@ From the results of this analysis, I can conclude that income does have an effec
 
 Check out the full code in my repo: <https://github.com/michellelam777/eds222_final_project>
 
-### References
-
 ### Supporting Figures
 
 ```{r,warning=FALSE, message=FALSE, results='hide'}
@@ -343,3 +341,5 @@ poly_income_qq <- ggplot(data = predictions_4,
 
 grid.arrange(poly_residuals_hist, poly_income_qq, ncol = 2)
 ```
+
+### References
