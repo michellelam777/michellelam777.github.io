@@ -353,7 +353,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="analysis" class="level3">
 <h3 class="anchored" data-anchor-id="analysis">Analysis</h3>
-<p>To analyze the effect of income on SGIP applications, I utilized the three datasets outlined above to create a data frame showing applications per thousand people and per capita income for each zip code. When aggregating from census tract level to zip code level, I took the median per capita income and summed the populations in each census tract to get income and population variables for each zip code. I used population of each zip code to calculate the applications per thousand people in order to account for the fact that higher income areas have more people and to create a more appropriate scale for interpretation. I did notice that after combining the datasets, there were 1933 NA values for per capita income and 1896 NA values for population out of the 10978 census tracts in the dataset. This could lead to inaccuracies since observations are analyzed on the zip code level and aggregation of the census tract data was performed.</p>
+<p>To analyze the effect of income on SGIP applications, I utilized the three datasets outlined above to create a data frame showing applications per thousand people and per capita income for each zip code. When aggregating from census tract level to zip code level, I took the median per capita income and summed the populations in each census tract to get income and population variables for each zip code. I used population of each zip code to calculate the applications per thousand people in order to account for the fact that higher income areas have more people and to create a more appropriate scale for interpretation. I did notice that after combining the datasets, there were 1,933 NA values for per capita income and 1,896 NA values for population out of the 10,978 census tracts in the dataset. This could lead to inaccuracies since observations are analyzed on the zip code level and aggregation of the census tract data was performed.</p>
 <div class="cell">
 <details>
 <summary>checkout the code</summary>
@@ -379,8 +379,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="regression-models" class="level5">
 <h5 class="anchored" data-anchor-id="regression-models">Regression Models</h5>
 <p>Next, I ran different regression models to see what would best fit the data. I started with a simple linear regression, but noticed that the median per capita income and the applications per thousand people observations were not normally distributed with a right tail (see supporting figures). Therefore, I ran a linear-log regression and log-log regression. The residuals from these models were not normally distributed so I ran a polynomial regression. The residuals on the polynomial regression were not normal either (see supporting figures), but I concluded that the polynomial regression was best fit since visually the slope doesn’t look constant and the coefficients were significant. Here is the equation for the model: <span class="math display">\[application_i =\beta_{0}+\beta_{1} \cdot income_i + \beta_{2} \cdot income_i^2 + \varepsilon_i\]</span></p>
-<p>I did notice that there was an outlier in the dataset, but when I removed the outlier and ran the polynomial regression it did not change the significance of the coefficients. Because the outlier didn’t drastically change model results and there was no evidence that this data point was and outlier caused by data entry or measurement errors, I left it in.</p>
-<p>As mentioned above, on all the models tested the residuals were not normally distributed with a long right tail. This means that the amount of error in the model is not consistent across the full range of my observed data and the model’s ability to accurately predict applications per thousand people at a given median per capita income is low.</p>
+<p>I did notice that there was an outlier in the dataset, but when I removed the outlier and ran the polynomial regression it did not change the significance of the coefficients. Because the outlier didn’t drastically change model results and there was no evidence that this data point was an outlier caused by data entry or measurement errors, I left it in.</p>
+<p>As mentioned above, on all the models tested the residuals were not normally distributed with a long right tail. This means that the amount of error in the model is not consistent across the full range of my observed data and the model’s ability to accurately predict applications per thousand people at a given median per capita income could be low.</p>
 </section>
 <section id="hypothesis-testing" class="level5">
 <h5 class="anchored" data-anchor-id="hypothesis-testing">Hypothesis Testing</h5>
@@ -430,12 +430,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </details>
 <div class="cell-output-display">
 
-<div id="gzmjlbnagr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ycgxairctr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#gzmjlbnagr .gt_table {
+#ycgxairctr .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -460,7 +460,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#gzmjlbnagr .gt_heading {
+#ycgxairctr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -472,7 +472,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#gzmjlbnagr .gt_title {
+#ycgxairctr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -484,7 +484,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#gzmjlbnagr .gt_subtitle {
+#ycgxairctr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -496,13 +496,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#gzmjlbnagr .gt_bottom_border {
+#ycgxairctr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gzmjlbnagr .gt_col_headings {
+#ycgxairctr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -517,7 +517,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#gzmjlbnagr .gt_col_heading {
+#ycgxairctr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -537,7 +537,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#gzmjlbnagr .gt_column_spanner_outer {
+#ycgxairctr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -549,15 +549,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#gzmjlbnagr .gt_column_spanner_outer:first-child {
+#ycgxairctr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gzmjlbnagr .gt_column_spanner_outer:last-child {
+#ycgxairctr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gzmjlbnagr .gt_column_spanner {
+#ycgxairctr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -569,7 +569,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#gzmjlbnagr .gt_group_heading {
+#ycgxairctr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -594,7 +594,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#gzmjlbnagr .gt_empty_group_heading {
+#ycgxairctr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -609,15 +609,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#gzmjlbnagr .gt_from_md > :first-child {
+#ycgxairctr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gzmjlbnagr .gt_from_md > :last-child {
+#ycgxairctr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gzmjlbnagr .gt_row {
+#ycgxairctr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -636,7 +636,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#gzmjlbnagr .gt_stub {
+#ycgxairctr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -649,7 +649,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#gzmjlbnagr .gt_stub_row_group {
+#ycgxairctr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -663,11 +663,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#gzmjlbnagr .gt_row_group_first td {
+#ycgxairctr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gzmjlbnagr .gt_summary_row {
+#ycgxairctr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -677,16 +677,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#gzmjlbnagr .gt_first_summary_row {
+#ycgxairctr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gzmjlbnagr .gt_first_summary_row.thick {
+#ycgxairctr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gzmjlbnagr .gt_last_summary_row {
+#ycgxairctr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -696,7 +696,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#gzmjlbnagr .gt_grand_summary_row {
+#ycgxairctr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -706,7 +706,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#gzmjlbnagr .gt_first_grand_summary_row {
+#ycgxairctr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -716,11 +716,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#gzmjlbnagr .gt_striped {
+#ycgxairctr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gzmjlbnagr .gt_table_body {
+#ycgxairctr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -729,7 +729,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#gzmjlbnagr .gt_footnotes {
+#ycgxairctr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -743,7 +743,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#gzmjlbnagr .gt_footnote {
+#ycgxairctr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -752,7 +752,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#gzmjlbnagr .gt_sourcenotes {
+#ycgxairctr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -766,7 +766,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#gzmjlbnagr .gt_sourcenote {
+#ycgxairctr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -774,64 +774,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#gzmjlbnagr .gt_left {
+#ycgxairctr .gt_left {
   text-align: left;
 }
 
-#gzmjlbnagr .gt_center {
+#ycgxairctr .gt_center {
   text-align: center;
 }
 
-#gzmjlbnagr .gt_right {
+#ycgxairctr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gzmjlbnagr .gt_font_normal {
+#ycgxairctr .gt_font_normal {
   font-weight: normal;
 }
 
-#gzmjlbnagr .gt_font_bold {
+#ycgxairctr .gt_font_bold {
   font-weight: bold;
 }
 
-#gzmjlbnagr .gt_font_italic {
+#ycgxairctr .gt_font_italic {
   font-style: italic;
 }
 
-#gzmjlbnagr .gt_super {
+#ycgxairctr .gt_super {
   font-size: 65%;
 }
 
-#gzmjlbnagr .gt_footnote_marks {
+#ycgxairctr .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#gzmjlbnagr .gt_asterisk {
+#ycgxairctr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gzmjlbnagr .gt_indent_1 {
+#ycgxairctr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gzmjlbnagr .gt_indent_2 {
+#ycgxairctr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gzmjlbnagr .gt_indent_3 {
+#ycgxairctr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gzmjlbnagr .gt_indent_4 {
+#ycgxairctr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gzmjlbnagr .gt_indent_5 {
+#ycgxairctr .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -895,7 +895,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p><span class="math display">\[application_i = -0.169 + 2.95e^{-5}\cdot income_i -1.80e^{-10}\cdot income_i^2 + \varepsilon_i\]</span></p>
 <p>To interpret output from the model, we can look at the difference in predicted applications per thousand people between regions of median per capita income.</p>
-<p>When moving from a median per capita income of 15,000 to 25,000 (low income), predicted applications per thousand people increases by 0.22. When moving from a median per capita income of 60,000 to 70,000 (middle income), predicted applications per thousand people increases by 0.06. When moving from a median per capita income of 100,000 to 110,000 (high income), predicted applications per thousand people decreases by 0.08.</p>
+<p>When moving from a median per capita income of $15,000 to $25,000 (low income), predicted applications per thousand people increases by 0.22. When moving from a median per capita income of $60,000 to $70,000 (middle income), predicted applications per thousand people increases by 0.06. When moving from a median per capita income of $100,000 to $110,000 (high income), predicted applications per thousand people decreases by 0.08.</p>
 <div class="cell">
 <details>
 <summary>checkout the code</summary>
