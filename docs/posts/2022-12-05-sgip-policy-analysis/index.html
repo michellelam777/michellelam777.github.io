@@ -218,20 +218,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <section id="the-question" class="level3">
-<h3 class="anchored" data-anchor-id="the-question"><strong>The Question</strong></h3>
+<h3 class="anchored" data-anchor-id="the-question">The Question</h3>
 <section id="what-is-the-effect-of-income-on-sgip-applications" class="level4">
-<h4 class="anchored" data-anchor-id="what-is-the-effect-of-income-on-sgip-applications"><strong>What is the effect of income on SGIP applications?</strong></h4>
+<h4 class="anchored" data-anchor-id="what-is-the-effect-of-income-on-sgip-applications">What is the effect of income on SGIP applications?</h4>
 </section>
 </section>
 <section id="introduction" class="level3">
-<h3 class="anchored" data-anchor-id="introduction"><strong>Introduction</strong></h3>
-<p>Energy storage is poised for rapid growth and will play a major role in the decarbonization of our energy industry. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The California Public Utilities Commission (CPUC) created the Self Generation Incentive Program (SGIP), in part, to provide rebates to people and organizations looking to install energy storage systems. In 2020, they introduced new funding categories that provide higher rebates under “Equity” and “Equity Resiliency” aimed to help lower-income, medically vulnerable, and at risk for fire communities pay for a battery. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Given that lower socioeconomic communities are shown to experience more frequent Public Safety Power Shutoffs (PSPS), <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> an energy storage system could be critical to avoiding the adverse effects of a power outage (e.g.&nbsp;food insecurity). There has been a study showing the socioeconomic disparities in residential battery storage adoption, <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> but there hasn’t been targeted analysis on SGIP participation post equity and equity resiliency funding becoming available.</p>
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>Energy storage is poised for rapid growth and will play a major role in the decarbonization of our energy industry. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The California Public Utilities Commission (CPUC) created the Self Generation Incentive Program (SGIP), in part, to provide rebates to people and organizations looking to install energy storage systems. In September of 2020, they introduced new funding categories that provide higher rebates under “Equity” and “Equity Resiliency” aimed to help lower-income, medically vulnerable, and at risk for fire communities pay for a battery. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Given that lower socioeconomic communities are shown to experience more frequent Public Safety Power Shutoffs (PSPS), <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> an energy storage system could be critical to avoiding the adverse effects of a power outage (e.g.&nbsp;food insecurity). There has been a study showing the socioeconomic disparities in residential battery storage adoption, <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> but there hasn’t been targeted analysis on SGIP participation post equity and equity resiliency funding becoming available.</p>
 <p>Examining if there is an effect of income on SGIP applications for 2020, could help inform the effectiveness of the new funding categories and subsequent policy decisions.</p>
 </section>
 <section id="data" class="level3">
-<h3 class="anchored" data-anchor-id="data"><strong>Data</strong></h3>
+<h3 class="anchored" data-anchor-id="data">Data</h3>
 <section id="sgip-applications" class="level5">
-<h5 class="anchored" data-anchor-id="sgip-applications"><strong>SGIP Applications</strong></h5>
+<h5 class="anchored" data-anchor-id="sgip-applications">SGIP Applications</h5>
 <p>I downloaded SGIP application data from the California Distributed Energy Statistics site. <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> Application data is reported on a weekly basis via an excel file. For this analysis, SGIP applications were filtered down to just residential and single family battery applications for 2020. The data was then summarized by zip code to get total count of applications for each zip code. I did notice that the metadata didn’t always correctly specify the categorical values in each variable, so there is room for error in categorization.</p>
 <p>When visualizing SGIP applications for 2020 you can see that over 40% of applications fall under the Equity Resiliency category.</p>
 <div class="cell">
@@ -301,7 +301,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 <section id="american-community-survey-acs" class="level5">
-<h5 class="anchored" data-anchor-id="american-community-survey-acs"><strong>American Community Survey (ACS)</strong></h5>
+<h5 class="anchored" data-anchor-id="american-community-survey-acs">American Community Survey (ACS)</h5>
 <p>I accessed American Community Survey (ACS) data containing per capita income and population for each census tract in California through an API and the tidycensus package in R.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Some limitations of the ACS data include that it is collected by selecting a random sample of addresses and therefore is not a true census of the population and data might not be as available/reliable for rural areas.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
 <div class="cell">
 <details>
@@ -338,7 +338,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 <section id="u.s.-department-of-housing-and-urban-development-hud" class="level5">
-<h5 class="anchored" data-anchor-id="u.s.-department-of-housing-and-urban-development-hud"><strong>U.S. Department of Housing and Urban Development (HUD)</strong></h5>
+<h5 class="anchored" data-anchor-id="u.s.-department-of-housing-and-urban-development-hud">U.S. Department of Housing and Urban Development (HUD)</h5>
 <p>I downloaded the crosswalk file in the form of a csv from the U.S. HUD site. <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> The file relates zip codes to census tracts and was utilized to match up application data (zip code level) to per capita income and population data (census tract level).</p>
 <div class="cell">
 <details>
@@ -351,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 </section>
 <section id="analysis" class="level3">
-<h3 class="anchored" data-anchor-id="analysis"><strong>Analysis</strong></h3>
+<h3 class="anchored" data-anchor-id="analysis">Analysis</h3>
 <p>To analyze the effect of income on SGIP applications, I utilized the three datasets outlined above to create a dataframe showing applications per thousand people and per capita income for each zip code. I used population of each zip code to calculate the applications per thousand people in order to account for the fact that higher income areas have more people and to create a more appropriate scale for interpretation.</p>
 <div class="cell">
 <details>
@@ -378,23 +378,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </details>
 </div>
 <section id="regression-models" class="level5">
-<h5 class="anchored" data-anchor-id="regression-models"><strong>Regression Models</strong></h5>
-<p>Next, I ran different regression models to see what would best fit the data. I tried a simple linear regression, linear-log regression, log-log regression and polynomial regression. I concluded that the polynomial regression was best fit since visually the slope doesn’t look constant and the coefficients were significant. Here is the equation for the model:</p>
-<p><span class="math display">\[application_i =\beta_{0}+\beta_{1} \cdot income_i + \beta_{2} \cdot income_i^2 + \varepsilon_i\]</span></p>
-<p>I did notice that there was an outlier in the dataset, but when I removed the outlier and ran the polynomial regression it did not change the significance level of the coefficients. Because the outlier didn’t drastically change model results and there was no evidence that this data point was and outlier caused by data entry or measurement errors, I left it in.</p>
+<h5 class="anchored" data-anchor-id="regression-models">Regression Models</h5>
+<p>Next, I ran different regression models to see what would best fit the data. I tried a simple linear regression, linear-log regression, log-log regression and polynomial regression. I concluded that the polynomial regression was best fit since visually the slope doesn’t look constant and the coefficients were significant. Here is the equation for the model: <span class="math display">\[application_i =\beta_{0}+\beta_{1} \cdot income_i + \beta_{2} \cdot income_i^2 + \varepsilon_i\]</span> I did notice that there was an outlier in the dataset, but when I removed the outlier and ran the polynomial regression it did not change the significance level of the coefficients. Because the outlier didn’t drastically change model results and there was no evidence that this data point was and outlier caused by data entry or measurement errors, I left it in.</p>
 <p>One notable limitation is that on all the models tested, including the polynomial regression, the residuals were not normally distributed with a long right tail. This means that the amount of error in the model is not consistent across the full range of my observed data and predictive accuracy of the model may be low.</p>
 </section>
 <section id="hypothesis-testing" class="level5">
-<h5 class="anchored" data-anchor-id="hypothesis-testing"><strong>Hypothesis Testing</strong></h5>
+<h5 class="anchored" data-anchor-id="hypothesis-testing">Hypothesis Testing</h5>
 <p>Additionally, I jointly tested the <span class="math inline">\(\beta_{1}\)</span> and <span class="math inline">\(\beta_{2}\)</span> coefficients using the linearHypothesis() function from the car package to test for no relationship between per capita income and applications per thousand people.</p>
 <p><span class="math inline">\(H_0: \beta_{1} = 0, \beta_{2} = 0\)</span></p>
 <p><span class="math inline">\(H_A: \beta_{j}\neq 0\)</span> for at least one <span class="math inline">\(j = 1,2\)</span></p>
 </section>
 </section>
 <section id="results" class="level3">
-<h3 class="anchored" data-anchor-id="results"><strong>Results</strong></h3>
+<h3 class="anchored" data-anchor-id="results">Results</h3>
 <section id="polynomial-regression" class="level5">
-<h5 class="anchored" data-anchor-id="polynomial-regression"><strong>Polynomial Regression</strong></h5>
+<h5 class="anchored" data-anchor-id="polynomial-regression">Polynomial Regression</h5>
 <p>From the below outputs of the model, I can see that the coefficient of per capita income is statistically significant at the 1% significance level (p-value = .001) and the coefficient of per capita income squared is statistically significant at the 5% significance level (p-value = 0.019). The R squared and adjusted R squared are really low at 0.017 and 0.016, respectively. This means that 1.6% of the variability in applications per thousand people is explained by per capita income. Having a low R squared value and a high significance for the coefficients in the model could mean that there is a statistically significant relationship between applications and income, but the predictive power of the model is low.</p>
 <div class="cell">
 <details>
@@ -432,12 +430,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </details>
 <div class="cell-output-display">
 
-<div id="odsiggrvcv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="lskihzgdnz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#odsiggrvcv .gt_table {
+#lskihzgdnz .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -462,7 +460,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#odsiggrvcv .gt_heading {
+#lskihzgdnz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -474,7 +472,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#odsiggrvcv .gt_title {
+#lskihzgdnz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -486,7 +484,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#odsiggrvcv .gt_subtitle {
+#lskihzgdnz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -498,13 +496,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#odsiggrvcv .gt_bottom_border {
+#lskihzgdnz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#odsiggrvcv .gt_col_headings {
+#lskihzgdnz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -519,7 +517,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#odsiggrvcv .gt_col_heading {
+#lskihzgdnz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -539,7 +537,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#odsiggrvcv .gt_column_spanner_outer {
+#lskihzgdnz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -551,15 +549,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#odsiggrvcv .gt_column_spanner_outer:first-child {
+#lskihzgdnz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#odsiggrvcv .gt_column_spanner_outer:last-child {
+#lskihzgdnz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#odsiggrvcv .gt_column_spanner {
+#lskihzgdnz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -571,7 +569,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#odsiggrvcv .gt_group_heading {
+#lskihzgdnz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -596,7 +594,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#odsiggrvcv .gt_empty_group_heading {
+#lskihzgdnz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -611,15 +609,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#odsiggrvcv .gt_from_md > :first-child {
+#lskihzgdnz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#odsiggrvcv .gt_from_md > :last-child {
+#lskihzgdnz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#odsiggrvcv .gt_row {
+#lskihzgdnz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -638,7 +636,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#odsiggrvcv .gt_stub {
+#lskihzgdnz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -651,7 +649,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#odsiggrvcv .gt_stub_row_group {
+#lskihzgdnz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -665,11 +663,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#odsiggrvcv .gt_row_group_first td {
+#lskihzgdnz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#odsiggrvcv .gt_summary_row {
+#lskihzgdnz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -679,16 +677,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#odsiggrvcv .gt_first_summary_row {
+#lskihzgdnz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#odsiggrvcv .gt_first_summary_row.thick {
+#lskihzgdnz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#odsiggrvcv .gt_last_summary_row {
+#lskihzgdnz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -698,7 +696,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#odsiggrvcv .gt_grand_summary_row {
+#lskihzgdnz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -708,7 +706,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#odsiggrvcv .gt_first_grand_summary_row {
+#lskihzgdnz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -718,11 +716,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#odsiggrvcv .gt_striped {
+#lskihzgdnz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#odsiggrvcv .gt_table_body {
+#lskihzgdnz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -731,7 +729,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#odsiggrvcv .gt_footnotes {
+#lskihzgdnz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -745,7 +743,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#odsiggrvcv .gt_footnote {
+#lskihzgdnz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -754,7 +752,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#odsiggrvcv .gt_sourcenotes {
+#lskihzgdnz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -768,7 +766,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#odsiggrvcv .gt_sourcenote {
+#lskihzgdnz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -776,64 +774,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#odsiggrvcv .gt_left {
+#lskihzgdnz .gt_left {
   text-align: left;
 }
 
-#odsiggrvcv .gt_center {
+#lskihzgdnz .gt_center {
   text-align: center;
 }
 
-#odsiggrvcv .gt_right {
+#lskihzgdnz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#odsiggrvcv .gt_font_normal {
+#lskihzgdnz .gt_font_normal {
   font-weight: normal;
 }
 
-#odsiggrvcv .gt_font_bold {
+#lskihzgdnz .gt_font_bold {
   font-weight: bold;
 }
 
-#odsiggrvcv .gt_font_italic {
+#lskihzgdnz .gt_font_italic {
   font-style: italic;
 }
 
-#odsiggrvcv .gt_super {
+#lskihzgdnz .gt_super {
   font-size: 65%;
 }
 
-#odsiggrvcv .gt_footnote_marks {
+#lskihzgdnz .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#odsiggrvcv .gt_asterisk {
+#lskihzgdnz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#odsiggrvcv .gt_indent_1 {
+#lskihzgdnz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#odsiggrvcv .gt_indent_2 {
+#lskihzgdnz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#odsiggrvcv .gt_indent_3 {
+#lskihzgdnz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#odsiggrvcv .gt_indent_4 {
+#lskihzgdnz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#odsiggrvcv .gt_indent_5 {
+#lskihzgdnz .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -930,7 +928,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 <section id="hypothesis-testing-1" class="level5">
-<h5 class="anchored" data-anchor-id="hypothesis-testing-1"><strong>Hypothesis Testing</strong></h5>
+<h5 class="anchored" data-anchor-id="hypothesis-testing-1">Hypothesis Testing</h5>
 <p>The resulting F-statistic (9.71) and p-value (6.60e-05) from the hypothesis testing indicate that I can reject my null hypothesis that both coefficients are 0 (i.e.&nbsp;there is no relationship between per capita income and applications per thousand people).</p>
 <div class="cell">
 <details>
@@ -942,8 +940,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 </section>
 <section id="conclusion-and-next-steps" class="level3">
-<h3 class="anchored" data-anchor-id="conclusion-and-next-steps"><strong>Conclusion and Next Steps</strong></h3>
+<h3 class="anchored" data-anchor-id="conclusion-and-next-steps">Conclusion and Next Steps</h3>
 <p>From the results of this analysis, I can conclude that income does have an effect on SGIP applications. It is hard to definitely say that the SGIP program is or is not helping lower income communities since the slope of the model increases up until a certain point and then decreases. From previous research mentioned in the introduction, I would have thought the slope of the model would be consistently positive. This would have shown that the SGIP program was being utilized less by low income. The model does, however, conclude that the lowest income communities are not utilizing the SGIP program. This can be due to a number of factors including, but not limited to, energy storage systems often being paired with solar, requirements of home ownership, and a lengthy rebate process that are barriers to adoption of this program. Some further analysis that would help determine if the equity and equity resiliency funding is helping low income communities is to compare pre 2020 applications to post 2020 applications to get a sense of if this funding changed rebate participation among lower income communities. Also adding medical vulnerability and wildfire risk as predictors to the model to see if those communities are utilizing the program.</p>
+<p>Check out the full code in my repo: <a href="https://github.com/michellelam777/eds222_final_project" class="uri">https://github.com/michellelam777/eds222_final_project</a></p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
 
 
 </section>
