@@ -251,7 +251,7 @@ ggplot(data = combined_by_zip, aes(x = percapita_income, y = applications_per_10
   geom_point() +
   geom_smooth(method = "lm", formula = y ~ x + I(x^2), size = 1) +
   scale_x_continuous(name="Median Per Capita Income", labels = scales::comma) +
-  labs(x = "Median Per Capita Income", y = "Applications Per 1000 People", title = "SGIP Applications Per Thousand People and Income Per Capita (2020)") +
+  labs(x = "Median Per Capita Income", y = "Applications Per 1000 People", title = "SGIP Applications Per Thousand People and Median Income Per Capita (2020)") +
   theme_minimal()
 ```
 
