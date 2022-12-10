@@ -22,9 +22,7 @@ image: texas-power-outage.png
 
 ### Research Questions
 
-#### How many Houston homes lost power as a result of the 2021 winter storms in Texas?
-
-Is median household income a predictor of community recovery? Were there disproportionate affects on medically vulnerable communities?
+#### How many Houston homes lost power as a result of the 2021 winter storms in Texas? Is median household income a predictor of community recovery? Were there disproportionate affects on medically vulnerable communities?
 
 ### Background
 
