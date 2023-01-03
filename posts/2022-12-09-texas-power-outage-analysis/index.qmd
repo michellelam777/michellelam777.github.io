@@ -354,7 +354,7 @@ tm_shape(acs_disability_houston) +
 
 Without further statistical analysis, it is hard to say if median household income is a predictor of communities recovery from a power outages. However, from this short analysis, it seems like census tracts that experienced power outages were not more likely to contain a higher percentage of disabled individuals.
 
-Some limitations of this study include only having satellite imagery for 2 days, missing data for median income, and assumptions of a 200m buffer for highways and that a drop of 200 nW cm^-2^sr^-1^ constitutes a blackout. Disability data from ACS may not be an equivalent proxy for those that are electricity-dependent so future analysis could include more precise data on people that utilize rely on electric-powered medical equipment. Other indicators of recovery that would be interesting to look at include race/ethnicity and home age.
+Some limitations of this study include only having satellite imagery for 2 days, missing data for median income, and assumptions of a 200m buffer for highways and that a drop of 200 nW cm^-2^sr^-1^ constitutes a blackout. Disability data from ACS may not be an equivalent proxy for those that are electricity-dependent so future analysis could include more precise data on people that rely on electric-powered medical equipment. Other indicators of recovery that would be interesting to look at include race/ethnicity and home age.
 
 checkout the full code in my repo: <https://github.com/michellelam777/texas-power-outage-analysis>
 
