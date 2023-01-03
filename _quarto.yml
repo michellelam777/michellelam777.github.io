@@ -4,14 +4,14 @@ project:
 
 website:
   title: "Michelle Lam"
-  favicon: images/logo.png
+  favicon: images/logo-2.png
   page-footer:
     background: light
     left: 
       - "Copyright 2023, Michelle Lam"
   navbar:
     title: false
-    logo: images/logo.png
+    logo: images/logo-2.png
     logo-alt: "Michelle Lam"
     right:
       - href: index.qmd
@@ -21,8 +21,8 @@ website:
     
 format:
   html:
-    theme: cosmo
-    css: styles.css
-    
+    theme: 
+      - mystyles.scss
+    mainfont: Open Sans
 editor: visual
 
