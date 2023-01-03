@@ -1,0 +1,30 @@
+/*-- scss:defaults --*/
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+// Colors
+$teal: #006D77;
+$blue: #BFDBF7;
+$white: #F7F9FA;
+$toffee: #E29578;
+$dark-blue: #0B3954;
+
+// Base document colors
+$navbar-bg: $blue; // navbar
+$navbar-fg: $teal; // navbar foreground elements
+$navbar-hl: $dark-blue; // highlight color when hovering over navbar links
+$body-bg: $white; // page background 
+$body-color: $teal; // page text 
+$footer-bg: $blue; // footer 
+$link-color: $dark-blue; // hyperlinks
+
+// Inline code
+$code-bg: $blue; // inline code background color
+$code-color: $dark-blue; // inline code text color
+
+/*-- scss:rules --*/
+h1, h3 {
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: $teal;
+}
