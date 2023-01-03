@@ -3,23 +3,25 @@ project:
   output-dir: docs
 
 website:
-  title: "michellelam777.github.io"
+  title: "Michelle Lam"
   favicon: images/logo.png
+  page-footer:
+    background: light
+    left: 
+      - "Copyright 2023, Michelle Lam"
   navbar:
     title: false
     logo: images/logo.png
     logo-alt: "Michelle Lam"
-    left:
+    right:
       - href: index.qmd
         text: Home
       - about.qmd
       - posts.qmd
-      
+    
 format:
   html:
-    theme:
-      light: yeti
-      dark: slate
+    theme: cosmo
     css: styles.css
     
 editor: visual
