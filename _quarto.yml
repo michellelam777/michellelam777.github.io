@@ -17,6 +17,8 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+      - href: resume/lam_michelle_resume.pdf
+        text: Resume
       - posts.qmd
     
 format:
