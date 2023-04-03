@@ -28,3 +28,20 @@ h1, h3 {
   font-weight: 700;
   color: $teal;
 }
+
+/* CLASS SELECTORS (self-defined) */
+
+.custom-subtitle {
+  font-size: 22px;
+  margin-bottom: 0.15em;
+}
+
+.custom-subtitle2 {
+  font-size: 20px;
+  font-style: italic;
+}
+
+.topbr {
+    display: block;
+    margin-top: 1em;
+}
