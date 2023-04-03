@@ -19,4 +19,23 @@ about:
 
 ### Hello!
 
-My name is Michelle Lam. I'm currently a graduate student working towards a [Master of Environmental Data Science](https://bren.ucsb.edu/masters-programs/master-environmental-data-science) (MEDS) from the Bren School of Environmental Science & Management at UCSB. Check out my about page for more info!
+<p class="topbr">My name is Michelle Lam. I'm currently a graduate student working towards a [Master of Environmental Data Science](https://bren.ucsb.edu/masters-programs/master-environmental-data-science) (MEDS) from the Bren School of Environmental Science & Management at UCSB. 
+
+---------------------------------------------------------------------------------------------------
+
+### Education
+<div class="topbr">
+<p class="custom-subtitle">`r fontawesome::fa("graduation-cap", fill = "#0B3954", a11y = "sem")` **Master of Environmental Data Science, Expected 2023**</p>  
+<p class="custom-subtitle2">Bren School of Environmental Science & Management, University of California Santa Barbara</p>
+
+<p class="custom-subtitle">`r fontawesome::fa("graduation-cap", fill = "#0B3954", a11y = "sem")` **Bachelor of Science in Environmental Science, 2017**</p>  
+<p class="custom-subtitle2">Santa Clara University</p>
+</div>
+
+---------------------------------------------------------------------------------------------------
+
+### Experience
+<div class="topbr">
+<p class="custom-subtitle">`r fontawesome::fa("building", fill = "#0B3954", a11y = "sem")` **Business Systems Analyst, 2019 - 2022**</p>
+<p class="custom-subtitle2">Baker Electric Home Energy</p>
+</div>
