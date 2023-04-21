@@ -19,7 +19,8 @@ website:
       - about.qmd
       - href: resume/lam_michelle_resume.pdf
         text: Resume
-      - posts.qmd
+      - href: posts.qmd
+        text: Projects
     
 format:
   html:
