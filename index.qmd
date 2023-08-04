@@ -19,23 +19,54 @@ about:
 
 ### Hello!
 
-<p class="topbr">My name is Michelle Lam. I'm currently a graduate student working towards a [Master of Environmental Data Science](https://bren.ucsb.edu/masters-programs/master-environmental-data-science) (MEDS) from the Bren School of Environmental Science & Management at UCSB. 
+<p class="topbr">
 
----------------------------------------------------------------------------------------------------
+My name is Michelle Lam. I'm a recent [Master of Environmental Data Science](https://bren.ucsb.edu/masters-programs/master-environmental-data-science) (MEDS) graduate from the Bren School of Environmental Science & Management at UCSB. If you're interested in learning more about my background and professional journey, please feel free to connect with me on LinkedIn!
+
+------------------------------------------------------------------------
 
 ### Education
-<div class="topbr">
-<p class="custom-subtitle">`r fontawesome::fa("graduation-cap", fill = "#0B3954", a11y = "sem")` **Master of Environmental Data Science, Expected 2023**</p>  
-<p class="custom-subtitle2">Bren School of Environmental Science & Management, University of California Santa Barbara</p>
 
-<p class="custom-subtitle">`r fontawesome::fa("graduation-cap", fill = "#0B3954", a11y = "sem")` **Bachelor of Science in Environmental Science, 2017**</p>  
-<p class="custom-subtitle2">Santa Clara University</p>
-</div>
+::: topbr
+<p class="custom-subtitle">
 
----------------------------------------------------------------------------------------------------
+`r fontawesome::fa("graduation-cap", fill = "#0B3954", a11y = "sem")` **Master of Environmental Data Science, 2023**
+
+</p>
+
+<p class="custom-subtitle2">
+
+Bren School of Environmental Science & Management, University of California Santa Barbara
+
+</p>
+
+<p class="custom-subtitle">
+
+`r fontawesome::fa("graduation-cap", fill = "#0B3954", a11y = "sem")` **Bachelor of Science in Environmental Science, 2017**
+
+</p>
+
+<p class="custom-subtitle2">
+
+Santa Clara University
+
+</p>
+:::
+
+------------------------------------------------------------------------
 
 ### Experience
-<div class="topbr">
-<p class="custom-subtitle">`r fontawesome::fa("building", fill = "#0B3954", a11y = "sem")` **Business Systems Analyst, 2019 - 2022**</p>
-<p class="custom-subtitle2">Baker Electric Home Energy</p>
-</div>
+
+::: topbr
+<p class="custom-subtitle">
+
+`r fontawesome::fa("building", fill = "#0B3954", a11y = "sem")` **Business Systems Analyst, 2019 - 2022**
+
+</p>
+
+<p class="custom-subtitle2">
+
+Baker Electric Home Energy
+
+</p>
+:::
